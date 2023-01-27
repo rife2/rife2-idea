@@ -1,18 +1,60 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.gbevin.rife2idea</id>
-    <name>IntelliJ Platform Plugin rife2-idea</name>
+    <id>rife.idea</id>
+    <name>RIFE2 Support</name>
     <vendor>gbevin</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.gbevin.rife2idea.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.gbevin.rife2idea.services.MyProjectService"/>
+        <!-- File type -->
+        <fileType
+                name="RIFE2"
+                implementationClass="rife.idea.file.Rife2FileType"
+                fieldName="INSTANCE"
+                language="RIFE2"
+                patterns="*.html"/>
+
+        <!-- Template parser -->
+        <lang.parserDefinition
+                language="RIFE2"
+                implementationClass="rife.idea.parser.Rife2ParserDefinition"/>
+
+        <!-- Syntax highlighting -->
+        <lang.syntaxHighlighterFactory
+                language="RIFE2"
+                implementationClass="rife.idea.highlighter.Rife2SyntaxHighlighterFactory"/>
+
+        <colorSettingsPage
+                implementation="rife.idea.highlighter.Rife2ColorSettingsPage"/>
+
+        <applicationService
+                serviceImplementation="rife.idea.services.Rife2ApplicationService"/>
+        <projectService
+                serviceImplementation="rife.idea.services.Rife2ProjectService"/>
+
+        <!-- Language factories -->
+        <lang.fileViewProviderFactory
+                language="RIFE2" implementationClass="rife.idea.file.Rife2FileViewProviderFactory"/>
+
+        <!-- Editor -->
+        <lang.commenter
+                language="RIFE2" implementationClass="rife.idea.editor.comments.Rife2Commenter"/>
+
+        <!-- Code completion -->
+        <typedHandler
+                implementation="rife.idea.editor.actions.Rife2TypedHandler"/>
+
+        <!-- Formatting -->
+        <lang.formatter
+                language="RIFE2"
+                implementationClass="rife.idea.format.Rife2FormattingModelBuilder"/>
+        <lang.substitutor
+                language="HTML"
+                implementationClass="rife.idea.file.Rife2LanguageSubstitutor"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.gbevin.rife2idea.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
 </idea-plugin>

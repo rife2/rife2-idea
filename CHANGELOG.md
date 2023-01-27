@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# rife2-idea Changelog
+# RIFE2 Support Changelog
 
 ## [Unreleased]
 ### Added

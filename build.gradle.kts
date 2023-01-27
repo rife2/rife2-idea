@@ -6,8 +6,8 @@ fun properties(key: String) = project.findProperty(key).toString()
 plugins {
     // Java support
     id("java")
-    // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.8.0"
+    // ANTLR support
+    id("antlr")
     // Gradle IntelliJ Plugin
     id("org.jetbrains.intellij") version "1.12.0"
     // Gradle Changelog Plugin
@@ -21,14 +21,20 @@ plugins {
 group = properties("pluginGroup")
 version = properties("pluginVersion")
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
 // Configure project's dependencies
 repositories {
     mavenCentral()
 }
 
-// Set the JVM language level used to build the project. Use Java 11 for 2020.3+, and Java 17 for 2022.2+.
-kotlin {
-    jvmToolchain(11)
+dependencies {
+    antlr("org.antlr:antlr4:4.11.1")
+    implementation("org.antlr:antlr4-intellij-adaptor:0.1")
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
