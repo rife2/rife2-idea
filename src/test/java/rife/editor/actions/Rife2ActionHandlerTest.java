@@ -10,7 +10,7 @@ import com.intellij.testFramework.fixtures.BasePlatformTestCase;
 import org.jetbrains.annotations.NotNull;
 import rife.idea.file.Rife2FileType;
 
-public class Rife2ActionHandlerTest extends BasePlatformTestCase {
+public abstract class Rife2ActionHandlerTest extends BasePlatformTestCase {
     private void performWriteAction(final Project project, final Runnable action) {
         ApplicationManager.getApplication().runWriteAction(() -> CommandProcessor.getInstance().executeCommand(project, action, "test command", null));
     }
