@@ -29,7 +29,10 @@ public class Rife2TypedHandler extends TypedHandlerDelegate {
             if (c == '{') {
                 PsiDocumentManager.getInstance(project).commitDocument(editor.getDocument());
 
-                var previous_chars = editor.getDocument().getText(new TextRange(offset - 3, offset));
+                var previous_chars = "";
+                if (offset >= 3) {
+                    previous_chars = editor.getDocument().getText(new TextRange(offset - 3, offset));
+                }
                 if (!previous_chars.equals("{{{") &&
                     (file.getLanguage().equals(HTMLLanguage.INSTANCE) ||
                      file.getLanguage().equals(Rife2Language.INSTANCE))) {
