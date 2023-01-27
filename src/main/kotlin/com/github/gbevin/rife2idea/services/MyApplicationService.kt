@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.gbevin.rife2idea.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.gbevin.rife2idea.MyBundle
 
 class MyApplicationService {
 

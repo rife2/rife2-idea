@@ -1,4 +1,4 @@
-package org.jetbrains.plugins.template
+package com.github.gbevin.rife2idea
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls
