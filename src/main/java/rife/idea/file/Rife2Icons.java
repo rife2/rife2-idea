@@ -13,5 +13,6 @@ public class Rife2Icons {
     public static final Icon FILE_HTML = IconLoader.getIcon("/icons/filetype-html.svg", Rife2Icons.class);
     public static final Icon FILE_JSON = IconLoader.getIcon("/icons/filetype-json.svg", Rife2Icons.class);
     public static final Icon FILE_SVG = IconLoader.getIcon("/icons/filetype-svg.svg", Rife2Icons.class);
+    public static final Icon FILE_TXT = IconLoader.getIcon("/icons/filetype-txt.svg", Rife2Icons.class);
     public static final Icon FILE_XML = IconLoader.getIcon("/icons/filetype-xml.svg", Rife2Icons.class);
 }

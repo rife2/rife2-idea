@@ -9,6 +9,7 @@ import com.intellij.json.JsonLanguage;
 import com.intellij.lang.html.HTMLLanguage;
 import com.intellij.lang.xml.XMLLanguage;
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.fileTypes.PlainTextLanguage;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.*;
@@ -28,6 +29,7 @@ public class Rife2TypedHandler extends TypedHandlerDelegate {
         if (!provider.getBaseLanguage().isKindOf(Rife2LanguageHtml.INSTANCE) &&
             !provider.getBaseLanguage().isKindOf(Rife2LanguageJson.INSTANCE) &&
             !provider.getBaseLanguage().isKindOf(Rife2LanguageSvg.INSTANCE) &&
+            !provider.getBaseLanguage().isKindOf(Rife2LanguageTxt.INSTANCE) &&
             !provider.getBaseLanguage().isKindOf(Rife2LanguageXml.INSTANCE)) {
             return Result.CONTINUE;
         }
@@ -41,6 +43,9 @@ public class Rife2TypedHandler extends TypedHandlerDelegate {
             file.getName().endsWith(Rife2FileTypeXml.DEFAULT_EXTENSION)) {
             charTypedCompact(c, project, editor, file, offset);
             charTypedXml(c, project, editor, file, offset);
+        } else if (file.getName().endsWith(Rife2FileTypeTxt.DEFAULT_EXTENSION)) {
+            charTypedCompact(c, project, editor, file, offset);
+            charTypedTxt(c, project, editor, file, offset);
         } else if (file.getName().endsWith(Rife2FileTypeJson.DEFAULT_EXTENSION)) {
             charTypedTxt(c, project, editor, file, offset);
         }
@@ -58,8 +63,8 @@ public class Rife2TypedHandler extends TypedHandlerDelegate {
             }
             if (!previous_chars.equals("{{{") &&
                 ((file.getLanguage().equals(HTMLLanguage.INSTANCE) || file.getLanguage().equals(Rife2LanguageHtml.INSTANCE) ||
-                  file.getLanguage().equals(JsonLanguage.INSTANCE) || file.getLanguage().equals(Rife2LanguageJson.INSTANCE) ||
                   file.getLanguage().equals(Rife2LanguageSvg.INSTANCE) ||
+                  file.getLanguage().equals(PlainTextLanguage.INSTANCE) || file.getLanguage().equals(Rife2LanguageTxt.INSTANCE) ||
                   file.getLanguage().equals(XMLLanguage.INSTANCE) || file.getLanguage().equals(Rife2LanguageXml.INSTANCE)))) {
                 editor.getDocument().insertString(offset, "}");
                 editor.getCaretModel().moveToOffset(offset);
@@ -88,7 +93,8 @@ public class Rife2TypedHandler extends TypedHandlerDelegate {
 
             var previous_chars = editor.getDocument().getText(new TextRange(offset - 2, offset));
             if (previous_chars.equals("<!") &&
-                (file.getLanguage().equals(JsonLanguage.INSTANCE) || file.getLanguage().equals(Rife2LanguageJson.INSTANCE))) {
+                (file.getLanguage().equals(JsonLanguage.INSTANCE) || file.getLanguage().equals(Rife2LanguageJson.INSTANCE) ||
+                 file.getLanguage().equals(PlainTextLanguage.INSTANCE) || file.getLanguage().equals(Rife2LanguageTxt.INSTANCE))) {
                 editor.getDocument().insertString(offset, ">");
                 editor.getCaretModel().moveToOffset(offset);
             }

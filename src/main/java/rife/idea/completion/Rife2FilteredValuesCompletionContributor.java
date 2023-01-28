@@ -60,6 +60,9 @@ public class Rife2FilteredValuesCompletionContributor extends CompletionContribu
             } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.CTagName_V).accepts(parameters.getPosition()) &&
                        PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.CS_V).accepts(parameters.getPosition().getPrevSibling())) {
                 result.addAllElements(FILTERED_VALUES);
+            } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionTxt.TTagName_V).accepts(parameters.getPosition()) &&
+                       PlatformPatterns.psiElement(Rife2ParserDefinitionTxt.TS_V).accepts(parameters.getPosition().getPrevSibling())) {
+                result.addAllElements(FILTERED_VALUES);
             } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.TTagName_V).accepts(parameters.getPosition()) &&
                        PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.TS_V).accepts(parameters.getPosition().getPrevSibling())) {
                 result.addAllElements(FILTERED_VALUES);

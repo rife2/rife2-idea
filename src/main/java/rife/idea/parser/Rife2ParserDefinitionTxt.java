@@ -16,14 +16,14 @@ import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.jetbrains.annotations.NotNull;
-import rife.idea.Rife2LanguageSvg;
-import rife.idea.psi.Rife2FileSvg;
+import rife.idea.Rife2LanguageTxt;
+import rife.idea.psi.Rife2FileTxt;
 import rife.template.antlr.TemplateLexer;
 import rife.template.antlr.TemplateParser;
 
-public class Rife2ParserDefinitionSvg extends Rife2ParserDefinition {
+public class Rife2ParserDefinitionTxt extends Rife2ParserDefinition {
     public static final IFileElementType FILE =
-        new IFileElementType(Rife2LanguageSvg.INSTANCE);
+        new IFileElementType(Rife2LanguageTxt.INSTANCE);
 
     public static TokenIElementType TEXT;
     public static TokenIElementType CTagName_V;
@@ -32,11 +32,11 @@ public class Rife2ParserDefinitionSvg extends Rife2ParserDefinition {
     public static TokenIElementType TS_V;
 
     static {
-        PSIElementTypeFactory.defineLanguageIElementTypes(Rife2LanguageSvg.INSTANCE,
+        PSIElementTypeFactory.defineLanguageIElementTypes(Rife2LanguageTxt.INSTANCE,
             TemplateParser.tokenNames,
             TemplateParser.ruleNames);
         var tokenIElementTypes =
-            PSIElementTypeFactory.getTokenIElementTypes(Rife2LanguageSvg.INSTANCE);
+            PSIElementTypeFactory.getTokenIElementTypes(Rife2LanguageTxt.INSTANCE);
 
         TEXT = tokenIElementTypes.get(TemplateLexer.TEXT);
         CTagName_V = tokenIElementTypes.get(TemplateLexer.CTagName_V);
@@ -47,13 +47,13 @@ public class Rife2ParserDefinitionSvg extends Rife2ParserDefinition {
 
     public static final TokenSet COMMENTED =
         PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageSvg.INSTANCE,
+            Rife2LanguageTxt.INSTANCE,
             TemplateLexer.TTEXT_C,
             TemplateLexer.CTEXT_C);
 
     public static final TokenSet STRINGS =
         PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageSvg.INSTANCE,
+            Rife2LanguageTxt.INSTANCE,
             TemplateLexer.TTagName_I,
             TemplateLexer.TComment_C,
             TemplateLexer.CTagName_I,
@@ -65,31 +65,31 @@ public class Rife2ParserDefinitionSvg extends Rife2ParserDefinition {
 
     public static final TokenSet NAMES_INCLUDE =
         PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageSvg.INSTANCE,
+            Rife2LanguageTxt.INSTANCE,
             TemplateLexer.TTagName_I,
             TemplateLexer.CTagName_I);
 
     public static final TokenSet NAMES_COMMENT =
         PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageSvg.INSTANCE,
+            Rife2LanguageTxt.INSTANCE,
             TemplateLexer.TComment_C,
             TemplateLexer.CComment_C);
 
     public static final TokenSet NAMES_BLOCK =
         PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageSvg.INSTANCE,
+            Rife2LanguageTxt.INSTANCE,
             TemplateLexer.TTagName_B,
             TemplateLexer.CTagName_B);
 
     public static final TokenSet NAMES_VALUE =
         PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageSvg.INSTANCE,
+            Rife2LanguageTxt.INSTANCE,
             TemplateLexer.TTagName_V,
             TemplateLexer.CTagName_V);
 
     public static final TokenSet TAGS_INCLUDE =
         PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageSvg.INSTANCE,
+            Rife2LanguageTxt.INSTANCE,
             TemplateLexer.CSTART_I,
             TemplateLexer.CSTERM_I,
             TemplateLexer.TSTART_I,
@@ -99,7 +99,7 @@ public class Rife2ParserDefinitionSvg extends Rife2ParserDefinition {
 
     public static final TokenSet TAGS_COMMENT =
         PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageSvg.INSTANCE,
+            Rife2LanguageTxt.INSTANCE,
             TemplateLexer.CSTART_C,
             TemplateLexer.CCLOSE_C,
             TemplateLexer.CSTERM_C,
@@ -113,7 +113,7 @@ public class Rife2ParserDefinitionSvg extends Rife2ParserDefinition {
 
     public static final TokenSet TAGS_BLOCK =
         PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageSvg.INSTANCE,
+            Rife2LanguageTxt.INSTANCE,
             TemplateLexer.CSTART_B,
             TemplateLexer.CSTART_BA,
             TemplateLexer.CSTART_BV,
@@ -135,7 +135,7 @@ public class Rife2ParserDefinitionSvg extends Rife2ParserDefinition {
 
     public static final TokenSet TAGS_VALUE =
         PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageSvg.INSTANCE,
+            Rife2LanguageTxt.INSTANCE,
             TemplateLexer.CSTART_V,
             TemplateLexer.CCLOSE_V,
             TemplateLexer.CSTERM_V,
@@ -160,13 +160,13 @@ public class Rife2ParserDefinitionSvg extends Rife2ParserDefinition {
     @NotNull
     @Override
     public Lexer createLexer(Project project) {
-        return new Rife2LexerSvg();
+        return new Rife2LexerTxt();
     }
 
     @NotNull
     public PsiParser createParser(final Project project) {
         final var parser = new TemplateParser(null);
-        return new ANTLRParserAdaptor(Rife2LanguageSvg.INSTANCE, parser) {
+        return new ANTLRParserAdaptor(Rife2LanguageTxt.INSTANCE, parser) {
             @Override
             protected ParseTree parse(Parser parser, IElementType root) {
                 return ((TemplateParser) parser).document();
@@ -181,6 +181,6 @@ public class Rife2ParserDefinitionSvg extends Rife2ParserDefinition {
 
     @Override
     public PsiFile createFile(FileViewProvider viewProvider) {
-        return new Rife2FileSvg(viewProvider);
+        return new Rife2FileTxt(viewProvider);
     }
 }

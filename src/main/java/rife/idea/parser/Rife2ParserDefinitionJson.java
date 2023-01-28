@@ -44,6 +44,7 @@ public class Rife2ParserDefinitionJson extends Rife2ParserDefinition {
         TTagName_V = tokenIElementTypes.get(TemplateLexer.TTagName_V);
         TS_V = tokenIElementTypes.get(TemplateLexer.TS_V);
     }
+
     public static final TokenSet COMMENTED =
         PSIElementTypeFactory.createTokenSet(
             Rife2LanguageJson.INSTANCE,
