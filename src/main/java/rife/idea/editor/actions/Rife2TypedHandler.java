@@ -11,8 +11,8 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.*;
 import org.jetbrains.annotations.NotNull;
-import rife.idea.Rife2Language;
-import rife.idea.file.Rife2FileType;
+import rife.idea.Rife2LanguageHtml;
+import rife.idea.file.Rife2FileTypeHtml;
 
 public class Rife2TypedHandler extends TypedHandlerDelegate {
     @NotNull
@@ -21,7 +21,7 @@ public class Rife2TypedHandler extends TypedHandlerDelegate {
         var offset = editor.getCaretModel().getOffset();
         var provider = file.getViewProvider();
 
-        if (!provider.getBaseLanguage().isKindOf(Rife2Language.INSTANCE)) {
+        if (!provider.getBaseLanguage().isKindOf(Rife2LanguageHtml.INSTANCE)) {
             return Result.CONTINUE;
         }
 
@@ -29,34 +29,42 @@ public class Rife2TypedHandler extends TypedHandlerDelegate {
             return Result.CONTINUE;
         }
 
-        if (file.getName().endsWith(Rife2FileType.DEFAULT_EXTENSION)) {
-            if (c == '{') {
-                PsiDocumentManager.getInstance(project).commitDocument(editor.getDocument());
-
-                var previous_chars = "";
-                if (offset >= 3) {
-                    previous_chars = editor.getDocument().getText(new TextRange(offset - 3, offset));
-                }
-                if (!previous_chars.equals("{{{") &&
-                    (file.getLanguage().equals(HTMLLanguage.INSTANCE) ||
-                     file.getLanguage().equals(Rife2Language.INSTANCE))) {
-                    editor.getDocument().insertString(offset, "}");
-                    editor.getCaretModel().moveToOffset(offset);
-                }
-            }
-            if (c == '!') {
-                PsiDocumentManager.getInstance(project).commitDocument(editor.getDocument());
-
-                var previous_chars = editor.getDocument().getText(new TextRange(offset - 2, offset));
-                if (previous_chars.equals("<!") &&
-                    (file.getLanguage().equals(HTMLLanguage.INSTANCE) ||
-                     file.getLanguage().equals(Rife2Language.INSTANCE))) {
-                    editor.getDocument().insertString(offset, "---->");
-                    editor.getCaretModel().moveToOffset(offset+2);
-                }
-            }
+        if (file.getName().endsWith(Rife2FileTypeHtml.DEFAULT_EXTENSION)) {
+            charTypedCompact(c, project, editor, file, offset);
+            charTypedXml(c, project, editor, file, offset);
         }
 
         return Result.CONTINUE;
+    }
+
+    private static void charTypedXml(char c, @NotNull Project project, @NotNull Editor editor, @NotNull PsiFile file, int offset) {
+        if (c == '!') {
+            PsiDocumentManager.getInstance(project).commitDocument(editor.getDocument());
+
+            var previous_chars = editor.getDocument().getText(new TextRange(offset - 2, offset));
+            if (previous_chars.equals("<!") &&
+                (file.getLanguage().equals(HTMLLanguage.INSTANCE) ||
+                 file.getLanguage().equals(Rife2LanguageHtml.INSTANCE))) {
+                editor.getDocument().insertString(offset, "---->");
+                editor.getCaretModel().moveToOffset(offset + 2);
+            }
+        }
+    }
+
+    private static void charTypedCompact(char c, @NotNull Project project, @NotNull Editor editor, @NotNull PsiFile file, int offset) {
+        if (c == '{') {
+            PsiDocumentManager.getInstance(project).commitDocument(editor.getDocument());
+
+            var previous_chars = "";
+            if (offset >= 3) {
+                previous_chars = editor.getDocument().getText(new TextRange(offset - 3, offset));
+            }
+            if (!previous_chars.equals("{{{") &&
+                (file.getLanguage().equals(HTMLLanguage.INSTANCE) ||
+                 file.getLanguage().equals(Rife2LanguageHtml.INSTANCE))) {
+                editor.getDocument().insertString(offset, "}");
+                editor.getCaretModel().moveToOffset(offset);
+            }
+        }
     }
 }

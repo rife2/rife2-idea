@@ -13,9 +13,9 @@ import com.intellij.psi.LanguageSubstitutor;
 import com.intellij.testFramework.LightVirtualFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import rife.idea.Rife2Language;
+import rife.idea.Rife2LanguageHtml;
 
-public class Rife2LanguageSubstitutor extends LanguageSubstitutor {
+public class Rife2LanguageSubstitutorHtml extends LanguageSubstitutor {
     @Nullable
     @Override
     public Language getLanguage(@NotNull VirtualFile file, @NotNull Project project) {
@@ -23,6 +23,6 @@ public class Rife2LanguageSubstitutor extends LanguageSubstitutor {
             return null;
         }
 
-        return FileTypeRegistry.getInstance().isFileOfType(file, HtmlFileType.INSTANCE) ? Rife2Language.INSTANCE : null;
+        return FileTypeRegistry.getInstance().isFileOfType(file, HtmlFileType.INSTANCE) ? Rife2LanguageHtml.INSTANCE : null;
     }
 }

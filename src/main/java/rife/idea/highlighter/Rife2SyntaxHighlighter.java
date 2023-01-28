@@ -4,25 +4,17 @@
  */
 package rife.idea.highlighter;
 
-import com.intellij.lexer.Lexer;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
-import rife.idea.parser.Rife2Lexer;
 import rife.idea.psi.Rife2TokenSets;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Rife2SyntaxHighlighter extends SyntaxHighlighterBase {
-
-    private static final Map<IElementType, TextAttributesKey> ATTRIBUTES = new HashMap<>();
-
-    @Override
-    public @NotNull Lexer getHighlightingLexer() {
-        return Rife2Lexer.createXmlLexer();
-    }
+public abstract class Rife2SyntaxHighlighter extends SyntaxHighlighterBase {
+    public static final Map<IElementType, TextAttributesKey> ATTRIBUTES = new HashMap<>();
 
     @Override
     public TextAttributesKey @NotNull [] getTokenHighlights(IElementType tokenType) {

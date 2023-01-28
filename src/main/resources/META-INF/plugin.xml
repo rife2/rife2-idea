@@ -8,54 +8,55 @@
     <depends>com.intellij.modules.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <!-- File type -->
-        <fileType
-                name="RIFE2"
-                implementationClass="rife.idea.file.Rife2FileType"
-                fieldName="INSTANCE"
-                language="RIFE2"
-                patterns="*.html"/>
-
-        <!-- Template parser -->
-        <lang.parserDefinition
-                language="RIFE2"
-                implementationClass="rife.idea.parser.Rife2ParserDefinition"/>
-
-        <!-- Syntax highlighting -->
-        <lang.syntaxHighlighterFactory
-                language="RIFE2"
-                implementationClass="rife.idea.highlighter.Rife2SyntaxHighlighterFactory"/>
-
-        <colorSettingsPage
-                implementation="rife.idea.highlighter.Rife2ColorSettingsPage"/>
-
         <applicationService
                 serviceImplementation="rife.idea.services.Rife2ApplicationService"/>
         <projectService
                 serviceImplementation="rife.idea.services.Rife2ProjectService"/>
+        <colorSettingsPage
+                implementation="rife.idea.highlighter.Rife2ColorSettingsPage"/>
+
+        <!-- File type -->
+        <fileType
+                name="RIFE2HTML"
+                implementationClass="rife.idea.file.Rife2FileTypeHtml"
+                fieldName="INSTANCE"
+                language="RIFE2HTML"
+                patterns="*.html"/>
+
+        <!-- Template parser -->
+        <lang.parserDefinition
+                language="RIFE2HTML"
+                implementationClass="rife.idea.parser.Rife2ParserDefinitionHtml"/>
+
+        <!-- Syntax highlighting -->
+        <lang.syntaxHighlighterFactory
+                language="RIFE2HTML"
+                implementationClass="rife.idea.highlighter.Rife2SyntaxHighlighterFactoryHtml"/>
 
         <!-- Language factories -->
         <lang.fileViewProviderFactory
-                language="RIFE2" implementationClass="rife.idea.file.Rife2FileViewProviderFactory"/>
+                language="RIFE2HTML"
+                implementationClass="rife.idea.file.Rife2FileViewProviderFactoryHtml"/>
 
         <!-- Editor -->
         <lang.commenter
-                language="RIFE2" implementationClass="rife.idea.editor.comments.Rife2Commenter"/>
+                language="RIFE2HTML"
+                implementationClass="rife.idea.editor.comments.Rife2CommenterXml"/>
 
         <!-- Code completion -->
         <typedHandler
                 implementation="rife.idea.editor.actions.Rife2TypedHandler"/>
         <completion.contributor
-                language="RIFE2"
+                language="RIFE2HTML"
                 implementationClass="rife.idea.completion.Rife2FilteredValuesCompletionContributor"/>
 
         <!-- Formatting -->
         <lang.formatter
-                language="RIFE2"
-                implementationClass="rife.idea.format.Rife2FormattingModelBuilder"/>
+                language="RIFE2HTML"
+                implementationClass="rife.idea.format.Rife2FormattingModelBuilderHtml"/>
         <lang.substitutor
                 language="HTML"
-                implementationClass="rife.idea.file.Rife2LanguageSubstitutor"/>
+                implementationClass="rife.idea.file.Rife2LanguageSubstitutorHtml"/>
     </extensions>
 
     <applicationListeners>

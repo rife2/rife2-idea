@@ -8,16 +8,16 @@ import com.intellij.lang.Language;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.*;
 import org.jetbrains.annotations.NotNull;
-import rife.idea.Rife2Language;
+import rife.idea.Rife2LanguageHtml;
 
-public class Rife2FileViewProviderFactory implements FileViewProviderFactory {
+public class Rife2FileViewProviderFactoryHtml implements FileViewProviderFactory {
     @NotNull
     @Override
     public FileViewProvider createFileViewProvider(@NotNull VirtualFile file,
                                                    Language language,
                                                    @NotNull PsiManager manager,
                                                    boolean eventSystemEnabled) {
-        assert language.isKindOf(Rife2Language.INSTANCE);
-        return new Rife2FileViewProvider(manager, file, eventSystemEnabled, language);
+        assert language.isKindOf(Rife2LanguageHtml.INSTANCE);
+        return new Rife2FileViewProviderHtml(manager, file, eventSystemEnabled, language);
     }
 }

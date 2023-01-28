@@ -2,11 +2,11 @@ package rife.idea.completion;
 
 import com.intellij.codeInsight.completion.CompletionType;
 import com.intellij.testFramework.fixtures.BasePlatformTestCase;
-import rife.idea.file.Rife2FileType;
+import rife.idea.file.Rife2FileTypeHtml;
 
 public class Rife2FilteredValuesCompletionTest extends BasePlatformTestCase {
     public void doBasicTest(String text, String... expected) {
-        myFixture.configureByText(Rife2FileType.INSTANCE, text);
+        myFixture.configureByText(Rife2FileTypeHtml.INSTANCE, text);
         myFixture.complete(CompletionType.BASIC);
         assertContainsElements(myFixture.getLookupElementStrings(), expected);
     }

@@ -8,7 +8,7 @@ import com.intellij.openapi.editor.ex.EditorEx;
 import com.intellij.openapi.project.Project;
 import com.intellij.testFramework.fixtures.BasePlatformTestCase;
 import org.jetbrains.annotations.NotNull;
-import rife.idea.file.Rife2FileType;
+import rife.idea.file.Rife2FileTypeHtml;
 
 public abstract class Rife2ActionHandlerTest extends BasePlatformTestCase {
     private void performWriteAction(final Project project, final Runnable action) {
@@ -30,7 +30,7 @@ public abstract class Rife2ActionHandlerTest extends BasePlatformTestCase {
     private void doExecuteActionTest(@NotNull String before, @NotNull String expected, @NotNull Runnable action) {
         validateTestStrings(before, expected);
 
-        myFixture.configureByText(Rife2FileType.INSTANCE, before);
+        myFixture.configureByText(Rife2FileTypeHtml.INSTANCE, before);
         performWriteAction(myFixture.getProject(), action);
         myFixture.checkResult(expected);
     }

@@ -13,13 +13,13 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.templateLanguages.TemplateDataLanguageMappings;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import rife.idea.Rife2Language;
-import rife.idea.parser.Rife2ParserDefinition;
+import rife.idea.Rife2LanguageHtml;
+import rife.idea.parser.Rife2ParserDefinitionHtml;
 
 public class Rife2TemplateHighlighter extends LayeredLexerEditorHighlighter {
     public Rife2TemplateHighlighter(@Nullable Project project, @Nullable VirtualFile virtualFile, @NotNull EditorColorsScheme colors) {
         // create the main highlighter
-        super(new Rife2SyntaxHighlighter(), colors);
+        super(new Rife2SyntaxHighlighterHtml(), colors);
 
         FileType type = null;
         if (project == null || virtualFile == null) {
@@ -30,11 +30,11 @@ public class Rife2TemplateHighlighter extends LayeredLexerEditorHighlighter {
                 type = language.getAssociatedFileType();
             }
             if (type == null) {
-                type = Rife2Language.getDefaultTemplateLang();
+                type = Rife2LanguageHtml.getDefaultTemplateLang();
             }
         }
 
         var outerHighlighter = SyntaxHighlighterFactory.getSyntaxHighlighter(type, project, virtualFile);
-        registerLayer(Rife2ParserDefinition.TEXT, new LayerDescriptor(outerHighlighter, ""));
+        registerLayer(Rife2ParserDefinitionHtml.TEXT, new LayerDescriptor(outerHighlighter, ""));
     }
 }

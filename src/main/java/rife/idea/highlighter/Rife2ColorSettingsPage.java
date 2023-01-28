@@ -11,7 +11,7 @@ import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;
 import com.intellij.openapi.options.colors.*;
 import org.jetbrains.annotations.*;
-import rife.idea.Rife2Language;
+import rife.idea.Rife2LanguageHtml;
 import rife.idea.file.Rife2Icons;
 
 import javax.swing.*;
@@ -77,7 +77,7 @@ public class Rife2ColorSettingsPage implements ColorSettingsPage {
     @NonNls private static final Map<String, TextAttributesKey> ourTags = RainbowHighlighter.createRainbowHLM();
 
     static {
-        SYNTAX_HIGHLIGHTER = SyntaxHighlighterFactory.getSyntaxHighlighter(Rife2Language.INSTANCE, null, null);
+        SYNTAX_HIGHLIGHTER = SyntaxHighlighterFactory.getSyntaxHighlighter(Rife2LanguageHtml.INSTANCE, null, null);
         DESCRIPTORS = new AttributesDescriptor[]{
             new AttributesDescriptor("Commented", Rife2Highlighter.COMMENTED),
             new AttributesDescriptor("Name include", Rife2Highlighter.NAME_INCLUDE),

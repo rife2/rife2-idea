@@ -8,7 +8,7 @@ import com.intellij.codeInsight.generation.CommenterWithLineSuffix;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class Rife2Commenter implements CommenterWithLineSuffix {
+public class Rife2CommenterXml implements CommenterWithLineSuffix {
     @Override
     @Nullable
     public String getLineCommentPrefix() {

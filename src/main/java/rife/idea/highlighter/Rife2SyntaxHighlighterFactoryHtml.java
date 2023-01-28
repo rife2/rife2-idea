@@ -11,9 +11,9 @@ import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class Rife2SyntaxHighlighterFactory extends SyntaxHighlighterFactory {
+public class Rife2SyntaxHighlighterFactoryHtml extends SyntaxHighlighterFactory {
     @Override
     public @NotNull SyntaxHighlighter getSyntaxHighlighter(@Nullable Project project, @Nullable VirtualFile virtualFile) {
-        return new Rife2SyntaxHighlighter();
+        return new Rife2SyntaxHighlighterHtml();
     }
 }

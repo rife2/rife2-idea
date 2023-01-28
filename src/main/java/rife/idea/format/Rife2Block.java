@@ -9,27 +9,28 @@ import com.intellij.formatting.Wrap;
 import com.intellij.formatting.templateLanguages.*;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.codeStyle.CodeStyleSettings;
-import com.intellij.psi.formatter.xml.HtmlPolicy;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import rife.idea.parser.Rife2ParserDefinition;
 
 import java.util.List;
 
 public class Rife2Block extends TemplateLanguageBlock {
-    public Rife2Block(@NotNull ASTNode node,
+    final private IElementType textElementType_;
+
+    public Rife2Block(@NotNull IElementType textElementType,
+                      @NotNull ASTNode node,
                       @Nullable Wrap wrap,
                       @Nullable Alignment alignment,
                       @NotNull TemplateLanguageBlockFactory blockFactory,
                       @NotNull CodeStyleSettings settings,
-                      @Nullable List<DataLanguageBlockWrapper> foreignChildren,
-                      HtmlPolicy policy) {
+                      @Nullable List<DataLanguageBlockWrapper> foreignChildren) {
         super(node, wrap, alignment, blockFactory, settings, foreignChildren);
+        textElementType_ = textElementType;
     }
 
     @Override
     protected IElementType getTemplateTextElementType() {
-        return Rife2ParserDefinition.TEXT;
+        return textElementType_;
     }
 }

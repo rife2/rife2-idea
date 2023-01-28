@@ -10,21 +10,21 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.codeStyle.CodeStyleSettings;
 import com.intellij.psi.formatter.FormattingDocumentModelImpl;
 import com.intellij.psi.formatter.xml.HtmlPolicy;
+import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class Rife2FormattingModelBuilder extends TemplateLanguageFormattingModelBuilder {
+public abstract class Rife2FormattingModelBuilder extends TemplateLanguageFormattingModelBuilder {
     @Override
     public TemplateLanguageBlock createTemplateLanguageBlock(@NotNull ASTNode node,
                                                              @Nullable Wrap wrap,
                                                              @Nullable Alignment alignment,
                                                              @Nullable List<DataLanguageBlockWrapper> foreignChildren,
                                                              @NotNull CodeStyleSettings codeStyleSettings) {
-        final FormattingDocumentModel documentModel = FormattingDocumentModelImpl.createOn(node.getPsi().getContainingFile());
-        var policy = new HtmlPolicy(codeStyleSettings, documentModel);
-
-        return new Rife2Block(node, wrap, alignment, this, codeStyleSettings, foreignChildren, policy);
+        return new Rife2Block(getTemplateTextElementType(), node, wrap, alignment, this, codeStyleSettings, foreignChildren);
     }
+
+    protected abstract IElementType getTemplateTextElementType();
 }

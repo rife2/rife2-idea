@@ -4,7 +4,7 @@ import com.intellij.codeInsight.completion.*;
 import com.intellij.codeInsight.lookup.LookupElementBuilder;
 import com.intellij.patterns.PlatformPatterns;
 import org.jetbrains.annotations.NotNull;
-import rife.idea.parser.Rife2ParserDefinition;
+import rife.idea.parser.Rife2ParserDefinitionHtml;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,11 +45,11 @@ public class Rife2FilteredValuesCompletionContributor extends CompletionContribu
     public void fillCompletionVariants(@NotNull CompletionParameters parameters, @NotNull CompletionResultSet result) {
         if (parameters.getCompletionType().equals(CompletionType.BASIC) &&
             !parameters.isAutoPopup()) {
-            if (PlatformPatterns.psiElement(Rife2ParserDefinition.CTagName_V).accepts(parameters.getPosition()) &&
-                PlatformPatterns.psiElement(Rife2ParserDefinition.CS_V).accepts(parameters.getPosition().getPrevSibling())) {
+            if (PlatformPatterns.psiElement(Rife2ParserDefinitionHtml.CTagName_V).accepts(parameters.getPosition()) &&
+                PlatformPatterns.psiElement(Rife2ParserDefinitionHtml.CS_V).accepts(parameters.getPosition().getPrevSibling())) {
                 result.addAllElements(FILTERED_VALUES);
-            } else if (PlatformPatterns.psiElement(Rife2ParserDefinition.TTagName_V).accepts(parameters.getPosition()) &&
-                       PlatformPatterns.psiElement(Rife2ParserDefinition.TS_V).accepts(parameters.getPosition().getPrevSibling())) {
+            } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionHtml.TTagName_V).accepts(parameters.getPosition()) &&
+                       PlatformPatterns.psiElement(Rife2ParserDefinitionHtml.TS_V).accepts(parameters.getPosition().getPrevSibling())) {
                 result.addAllElements(FILTERED_VALUES);
             }
         }
