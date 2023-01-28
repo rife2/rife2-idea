@@ -37,4 +37,14 @@ public class Rife2TokenSets {
     public static final TokenSet SVG_TAGS_BLOCK = Rife2ParserDefinitionSvg.TAGS_BLOCK;
     public static final TokenSet SVG_TAGS_VALUE = Rife2ParserDefinitionSvg.TAGS_VALUE;
     public static final TokenSet SVG_COMMENTED = Rife2ParserDefinitionSvg.COMMENTED;
+
+    public static final TokenSet XML_NAMES_INCLUDE = Rife2ParserDefinitionXml.NAMES_INCLUDE;
+    public static final TokenSet XML_NAMES_COMMENT = Rife2ParserDefinitionXml.NAMES_COMMENT;
+    public static final TokenSet XML_NAMES_BLOCK = Rife2ParserDefinitionXml.NAMES_BLOCK;
+    public static final TokenSet XML_NAMES_VALUE = Rife2ParserDefinitionXml.NAMES_VALUE;
+    public static final TokenSet XML_TAGS_INCLUDE = Rife2ParserDefinitionXml.TAGS_INCLUDE;
+    public static final TokenSet XML_TAGS_COMMENT = Rife2ParserDefinitionXml.TAGS_COMMENT;
+    public static final TokenSet XML_TAGS_BLOCK = Rife2ParserDefinitionXml.TAGS_BLOCK;
+    public static final TokenSet XML_TAGS_VALUE = Rife2ParserDefinitionXml.TAGS_VALUE;
+    public static final TokenSet XML_COMMENTED = Rife2ParserDefinitionXml.COMMENTED;
 }

@@ -34,6 +34,12 @@
                 fieldName="INSTANCE"
                 language="RIFE2SVG"
                 patterns="*.svg"/>
+        <fileType
+                name="RIFE2XML"
+                implementationClass="rife.idea.file.Rife2FileTypeXml"
+                fieldName="INSTANCE"
+                language="RIFE2XML"
+                patterns="*.xml"/>
 
         <!-- Template parser -->
         <lang.parserDefinition
@@ -45,6 +51,9 @@
         <lang.parserDefinition
                 language="RIFE2SVG"
                 implementationClass="rife.idea.parser.Rife2ParserDefinitionSvg"/>
+        <lang.parserDefinition
+                language="RIFE2XML"
+                implementationClass="rife.idea.parser.Rife2ParserDefinitionXml"/>
 
         <!-- Syntax highlighting -->
         <lang.syntaxHighlighterFactory
@@ -56,6 +65,9 @@
         <lang.syntaxHighlighterFactory
                 language="RIFE2SVG"
                 implementationClass="rife.idea.highlighter.Rife2SyntaxHighlighterFactorySvg"/>
+        <lang.syntaxHighlighterFactory
+                language="RIFE2XML"
+                implementationClass="rife.idea.highlighter.Rife2SyntaxHighlighterFactoryXml"/>
 
         <!-- Language factories -->
         <lang.fileViewProviderFactory
@@ -67,6 +79,9 @@
         <lang.fileViewProviderFactory
                 language="RIFE2SVG"
                 implementationClass="rife.idea.file.Rife2FileViewProviderFactorySvg"/>
+        <lang.fileViewProviderFactory
+                language="RIFE2XML"
+                implementationClass="rife.idea.file.Rife2FileViewProviderFactoryXml"/>
 
         <!-- Editor -->
         <lang.commenter
@@ -77,6 +92,9 @@
                 implementationClass="rife.idea.editor.comments.Rife2CommenterTxt"/>
         <lang.commenter
                 language="RIFE2SVG"
+                implementationClass="rife.idea.editor.comments.Rife2CommenterXml"/>
+        <lang.commenter
+                language="RIFE2XML"
                 implementationClass="rife.idea.editor.comments.Rife2CommenterXml"/>
 
         <!-- Code completion -->
@@ -90,6 +108,9 @@
                 implementationClass="rife.idea.completion.Rife2FilteredValuesCompletionContributor"/>
         <completion.contributor
                 language="RIFE2SVG"
+                implementationClass="rife.idea.completion.Rife2FilteredValuesCompletionContributor"/>
+        <completion.contributor
+                language="RIFE2XML"
                 implementationClass="rife.idea.completion.Rife2FilteredValuesCompletionContributor"/>
 
         <!-- Formatting -->
@@ -108,6 +129,9 @@
         <lang.formatter
                 language="RIFE2SVG"
                 implementationClass="rife.idea.format.Rife2FormattingModelBuilderSvg"/>
+        <lang.formatter
+                language="RIFE2XML"
+                implementationClass="rife.idea.format.Rife2FormattingModelBuilderXml"/>
         <lang.substitutor
                 language="XML"
                 implementationClass="rife.idea.file.Rife2LanguageSubstitutorXml"/>

@@ -14,6 +14,7 @@ import com.intellij.testFramework.LightVirtualFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import rife.idea.Rife2LanguageSvg;
+import rife.idea.Rife2LanguageXml;
 
 public class Rife2LanguageSubstitutorXml extends LanguageSubstitutor {
     @Nullable
@@ -23,6 +24,15 @@ public class Rife2LanguageSubstitutorXml extends LanguageSubstitutor {
             return null;
         }
 
-        return FileTypeRegistry.getInstance().isFileOfType(file, XmlFileType.INSTANCE) ? Rife2LanguageSvg.INSTANCE : null;
+        if (FileTypeRegistry.getInstance().isFileOfType(file, XmlFileType.INSTANCE) && file.getExtension() != null) {
+            if (file.getExtension().equals(Rife2FileTypeSvg.DEFAULT_EXTENSION)) {
+                return Rife2LanguageSvg.INSTANCE;
+            }
+            else if (file.getExtension().equals(Rife2FileTypeXml.DEFAULT_EXTENSION)) {
+                return Rife2LanguageXml.INSTANCE;
+            }
+        }
+
+        return null;
     }
 }
