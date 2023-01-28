@@ -60,11 +60,20 @@ public class Rife2FilteredValuesCompletionContributor extends CompletionContribu
             } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.CTagName_V).accepts(parameters.getPosition()) &&
                        PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.CS_V).accepts(parameters.getPosition().getPrevSibling())) {
                 result.addAllElements(FILTERED_VALUES);
+            } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.TTagName_V).accepts(parameters.getPosition()) &&
+                       PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.TS_V).accepts(parameters.getPosition().getPrevSibling())) {
+                result.addAllElements(FILTERED_VALUES);
+            } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionTxt.CTagName_V).accepts(parameters.getPosition()) &&
+                       PlatformPatterns.psiElement(Rife2ParserDefinitionTxt.CS_V).accepts(parameters.getPosition().getPrevSibling())) {
+                result.addAllElements(FILTERED_VALUES);
             } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionTxt.TTagName_V).accepts(parameters.getPosition()) &&
                        PlatformPatterns.psiElement(Rife2ParserDefinitionTxt.TS_V).accepts(parameters.getPosition().getPrevSibling())) {
                 result.addAllElements(FILTERED_VALUES);
-            } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.TTagName_V).accepts(parameters.getPosition()) &&
-                       PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.TS_V).accepts(parameters.getPosition().getPrevSibling())) {
+            } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionXml.CTagName_V).accepts(parameters.getPosition()) &&
+                       PlatformPatterns.psiElement(Rife2ParserDefinitionXml.CS_V).accepts(parameters.getPosition().getPrevSibling())) {
+                result.addAllElements(FILTERED_VALUES);
+            } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionXml.TTagName_V).accepts(parameters.getPosition()) &&
+                       PlatformPatterns.psiElement(Rife2ParserDefinitionXml.TS_V).accepts(parameters.getPosition().getPrevSibling())) {
                 result.addAllElements(FILTERED_VALUES);
             }
         }

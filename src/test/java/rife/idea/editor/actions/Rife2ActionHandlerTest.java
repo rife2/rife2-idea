@@ -8,7 +8,7 @@ import com.intellij.openapi.editor.ex.EditorEx;
 import com.intellij.openapi.project.Project;
 import com.intellij.testFramework.fixtures.BasePlatformTestCase;
 import org.jetbrains.annotations.NotNull;
-import rife.idea.file.Rife2FileTypeHtml;
+import rife.idea.file.*;
 
 public abstract class Rife2ActionHandlerTest extends BasePlatformTestCase {
     private void performWriteAction(final Project project, final Runnable action) {
@@ -21,16 +21,52 @@ public abstract class Rife2ActionHandlerTest extends BasePlatformTestCase {
         }
     }
 
-    void doCharTest(final char charToType, @NotNull String before, @NotNull String expected) {
+    void doCharTestXml(final char charToType, @NotNull String before, @NotNull String expected) {
         EditorActionManager.getInstance();
         final TypedAction typedAction = TypedAction.getInstance();
-        doExecuteActionTest(before, expected, () -> typedAction.actionPerformed(myFixture.getEditor(), charToType, ((EditorEx) myFixture.getEditor()).getDataContext()));
+        doExecuteActionTestXml(before, expected, () -> typedAction.actionPerformed(myFixture.getEditor(), charToType, ((EditorEx) myFixture.getEditor()).getDataContext()));
     }
 
-    private void doExecuteActionTest(@NotNull String before, @NotNull String expected, @NotNull Runnable action) {
+    private void doExecuteActionTestXml(@NotNull String before, @NotNull String expected, @NotNull Runnable action) {
         validateTestStrings(before, expected);
 
         myFixture.configureByText(Rife2FileTypeHtml.INSTANCE, before);
+        performWriteAction(myFixture.getProject(), action);
+        myFixture.checkResult(expected);
+
+        myFixture.configureByText(Rife2FileTypeSvg.INSTANCE, before);
+        performWriteAction(myFixture.getProject(), action);
+        myFixture.checkResult(expected);
+
+        myFixture.configureByText(Rife2FileTypeXml.INSTANCE, before);
+        performWriteAction(myFixture.getProject(), action);
+        myFixture.checkResult(expected);
+    }
+
+    void doCharTestJson(final char charToType, @NotNull String before, @NotNull String expected) {
+        EditorActionManager.getInstance();
+        final TypedAction typedAction = TypedAction.getInstance();
+        doExecuteActionTestJson(before, expected, () -> typedAction.actionPerformed(myFixture.getEditor(), charToType, ((EditorEx) myFixture.getEditor()).getDataContext()));
+    }
+
+    private void doExecuteActionTestJson(@NotNull String before, @NotNull String expected, @NotNull Runnable action) {
+        validateTestStrings(before, expected);
+
+        myFixture.configureByText(Rife2FileTypeJson.INSTANCE, before);
+        performWriteAction(myFixture.getProject(), action);
+        myFixture.checkResult(expected);
+    }
+
+    void doCharTestTxt(final char charToType, @NotNull String before, @NotNull String expected) {
+        EditorActionManager.getInstance();
+        final TypedAction typedAction = TypedAction.getInstance();
+        doExecuteActionTestTxt(before, expected, () -> typedAction.actionPerformed(myFixture.getEditor(), charToType, ((EditorEx) myFixture.getEditor()).getDataContext()));
+    }
+
+    private void doExecuteActionTestTxt(@NotNull String before, @NotNull String expected, @NotNull Runnable action) {
+        validateTestStrings(before, expected);
+
+        myFixture.configureByText(Rife2FileTypeTxt.INSTANCE, before);
         performWriteAction(myFixture.getProject(), action);
         myFixture.checkResult(expected);
     }

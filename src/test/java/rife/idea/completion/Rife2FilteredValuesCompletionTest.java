@@ -1,26 +1,54 @@
 package rife.idea.completion;
 
 import com.intellij.codeInsight.completion.CompletionType;
+import com.intellij.codeInsight.lookup.LookupElement;
 import com.intellij.testFramework.fixtures.BasePlatformTestCase;
-import rife.idea.file.Rife2FileTypeHtml;
+import com.intellij.util.containers.ContainerUtil;
+import rife.idea.file.*;
 
 public class Rife2FilteredValuesCompletionTest extends BasePlatformTestCase {
-    public void doBasicTest(String text, String... expected) {
+    public void doBasicTestXml(String text, String... expected) {
         myFixture.configureByText(Rife2FileTypeHtml.INSTANCE, text);
-        myFixture.complete(CompletionType.BASIC);
-        assertContainsElements(myFixture.getLookupElementStrings(), expected);
+        var result1 = myFixture.complete(CompletionType.BASIC);
+        assertContainsElements(ContainerUtil.map(result1, LookupElement::getLookupString), expected);
+
+        myFixture.configureByText(Rife2FileTypeSvg.INSTANCE, text);
+        var result2 = myFixture.complete(CompletionType.BASIC);
+        assertContainsElements(ContainerUtil.map(result2, LookupElement::getLookupString), expected);
+
+        myFixture.configureByText(Rife2FileTypeXml.INSTANCE, text);
+        var result3 = myFixture.complete(CompletionType.BASIC);
+        assertContainsElements(ContainerUtil.map(result3, LookupElement::getLookupString), expected);
     }
 
-    public void testMissingWhitespace() {
-        doBasicTest("<!--v<caret>");
+    public void doBasicTestTxt(String text, String... expected) {
+        myFixture.configureByText(Rife2FileTypeJson.INSTANCE, text);
+        var result1 = myFixture.complete(CompletionType.BASIC);
+        assertContainsElements(ContainerUtil.map(result1, LookupElement::getLookupString), expected);
+
+        myFixture.configureByText(Rife2FileTypeTxt.INSTANCE, text);
+        var result2 = myFixture.complete(CompletionType.BASIC);
+        assertContainsElements(ContainerUtil.map(result2, LookupElement::getLookupString), expected);
     }
 
-    public void testMissingWhitespaceCompact() {
-        doBasicTest("{{v<caret>");
+    public void testMissingWhitespaceXml() {
+        doBasicTestXml("<!--v<caret>");
     }
 
-    public void testSimple() {
-        doBasicTest("<!--v <caret>",
+    public void testMissingWhitespaceTxt() {
+        doBasicTestTxt("<!v<caret>");
+    }
+
+    public void testMissingWhitespaceCompactXml() {
+        doBasicTestXml("{{v<caret>");
+    }
+
+    public void testMissingWhitespaceCompactTxt() {
+        doBasicTestTxt("{{v<caret>");
+    }
+
+    public void testSimpleXml() {
+        doBasicTestXml("<!--v <caret>",
             "attribute:",
             "auth:",
             "context:contId",
@@ -50,8 +78,8 @@ public class Rife2FilteredValuesCompletionTest extends BasePlatformTestCase {
             "webapp:rootUrl");
     }
 
-    public void testSimpleCompact() {
-        doBasicTest("{{v <caret>",
+    public void testSimpleTxt() {
+        doBasicTestTxt("<!v <caret>",
             "attribute:",
             "auth:",
             "context:contId",
@@ -81,24 +109,102 @@ public class Rife2FilteredValuesCompletionTest extends BasePlatformTestCase {
             "webapp:rootUrl");
     }
 
-    public void testCompleteTagsWithA() {
-        doBasicTest("<!--v a<caret>", "attribute:", "auth:");
+    public void testSimpleCompactXml() {
+        doBasicTestXml("{{v <caret>",
+            "attribute:",
+            "auth:",
+            "context:contId",
+            "context:paramContId",
+            "context:paramRandom",
+            "context:pathInfo",
+            "cookie:",
+            "form:checkbox:",
+            "form:display:",
+            "form:email:",
+            "form:hidden:",
+            "form:input:",
+            "form:radio:",
+            "form:secret:",
+            "form:select:",
+            "form:textarea:",
+            "form:url:",
+            "l10n:",
+            "lang:",
+            "param:",
+            "property:",
+            "render:",
+            "route:",
+            "route:action:",
+            "route:inputs:",
+            "server:rootUrl",
+            "webapp:rootUrl");
     }
 
-    public void testCompleteTagsWithACompact() {
-        doBasicTest("{{v a<caret>", "attribute:", "auth:");
+    public void testSimpleCompactTxt() {
+        doBasicTestTxt("{{v <caret>",
+            "attribute:",
+            "auth:",
+            "context:contId",
+            "context:paramContId",
+            "context:paramRandom",
+            "context:pathInfo",
+            "cookie:",
+            "form:checkbox:",
+            "form:display:",
+            "form:email:",
+            "form:hidden:",
+            "form:input:",
+            "form:radio:",
+            "form:secret:",
+            "form:select:",
+            "form:textarea:",
+            "form:url:",
+            "l10n:",
+            "lang:",
+            "param:",
+            "property:",
+            "render:",
+            "route:",
+            "route:action:",
+            "route:inputs:",
+            "server:rootUrl",
+            "webapp:rootUrl");
     }
 
-    public void testCompleteTagsWithB() {
-        doBasicTest("<!--v b<caret>");
+    public void testCompleteTagsWithAXml() {
+        doBasicTestXml("<!--v a<caret>", "attribute:", "auth:");
     }
 
-    public void testCompleteTagsWithBCompact() {
-        doBasicTest("{{v b<caret>");
+    public void testCompleteTagsWithATxt() {
+        doBasicTestTxt("<!v a<caret>", "attribute:", "auth:");
     }
 
-    public void testCompleteTagsWithC() {
-        doBasicTest("<!--v c<caret>",
+    public void testCompleteTagsWithACompactXml() {
+        doBasicTestXml("{{v a<caret>", "attribute:", "auth:");
+    }
+
+    public void testCompleteTagsWithACompactTxt() {
+        doBasicTestTxt("{{v a<caret>", "attribute:", "auth:");
+    }
+
+    public void testCompleteTagsWithBXml() {
+        doBasicTestXml("<!--v b<caret>");
+    }
+
+    public void testCompleteTagsWithBTxt() {
+        doBasicTestTxt("<!v b<caret>");
+    }
+
+    public void testCompleteTagsWithBCompactXml() {
+        doBasicTestXml("{{v b<caret>");
+    }
+
+    public void testCompleteTagsWithBCompactTxt() {
+        doBasicTestTxt("{{v b<caret>");
+    }
+
+    public void testCompleteTagsWithCXml() {
+        doBasicTestXml("<!--v c<caret>",
             "context:contId",
             "context:paramContId",
             "context:paramRandom",
@@ -106,8 +212,8 @@ public class Rife2FilteredValuesCompletionTest extends BasePlatformTestCase {
             "cookie:");
     }
 
-    public void testCompleteTagsWithCCompact() {
-        doBasicTest("{{v c<caret>",
+    public void testCompleteTagsWithCTxt() {
+        doBasicTestTxt("<!v c<caret>",
             "context:contId",
             "context:paramContId",
             "context:paramRandom",
@@ -115,24 +221,58 @@ public class Rife2FilteredValuesCompletionTest extends BasePlatformTestCase {
             "cookie:");
     }
 
-    public void testCompleteTagsWithD() {
-        doBasicTest("<!--v d<caret>");
+    public void testCompleteTagsWithCCompactXml() {
+        doBasicTestXml("{{v c<caret>",
+            "context:contId",
+            "context:paramContId",
+            "context:paramRandom",
+            "context:pathInfo",
+            "cookie:");
     }
 
-    public void testCompleteTagsWithDCompact() {
-        doBasicTest("{{v d<caret>");
+    public void testCompleteTagsWithCCompactTxt() {
+        doBasicTestTxt("{{v c<caret>",
+            "context:contId",
+            "context:paramContId",
+            "context:paramRandom",
+            "context:pathInfo",
+            "cookie:");
     }
 
-    public void testCompleteTagsWithE() {
-        doBasicTest("<!--v e<caret>");
+    public void testCompleteTagsWithDXml() {
+        doBasicTestXml("<!--v d<caret>");
     }
 
-    public void testCompleteTagsWithECompact() {
-        doBasicTest("{{v e<caret>");
+    public void testCompleteTagsWithDTxt() {
+        doBasicTestTxt("<!v d<caret>");
     }
 
-    public void testCompleteTagsWithF() {
-        doBasicTest("<!--v f<caret>",
+    public void testCompleteTagsWithDCompactXml() {
+        doBasicTestXml("{{v d<caret>");
+    }
+
+    public void testCompleteTagsWithDCompactTxt() {
+        doBasicTestTxt("{{v d<caret>");
+    }
+
+    public void testCompleteTagsWithEXml() {
+        doBasicTestXml("<!--v e<caret>");
+    }
+
+    public void testCompleteTagsWithETxt() {
+        doBasicTestTxt("<!v e<caret>");
+    }
+
+    public void testCompleteTagsWithECompactXml() {
+        doBasicTestXml("{{v e<caret>");
+    }
+
+    public void testCompleteTagsWithECompactTxt() {
+        doBasicTestTxt("{{v e<caret>");
+    }
+
+    public void testCompleteTagsWithFXml() {
+        doBasicTestXml("<!--v f<caret>",
             "form:checkbox:",
             "form:display:",
             "form:email:",
@@ -145,8 +285,8 @@ public class Rife2FilteredValuesCompletionTest extends BasePlatformTestCase {
             "form:url:");
     }
 
-    public void testCompleteTagsWithFCompact() {
-        doBasicTest("{{v f<caret>",
+    public void testCompleteTagsWithFTxt() {
+        doBasicTestTxt("<!v f<caret>",
             "form:checkbox:",
             "form:display:",
             "form:email:",
@@ -159,184 +299,381 @@ public class Rife2FilteredValuesCompletionTest extends BasePlatformTestCase {
             "form:url:");
     }
 
-    public void testCompleteTagsWithG() {
-        doBasicTest("<!--v g<caret>");
+    public void testCompleteTagsWithFCompactXml() {
+        doBasicTestXml("{{v f<caret>",
+            "form:checkbox:",
+            "form:display:",
+            "form:email:",
+            "form:hidden:",
+            "form:input:",
+            "form:radio:",
+            "form:secret:",
+            "form:select:",
+            "form:textarea:",
+            "form:url:");
     }
 
-    public void testCompleteTagsWithGCompact() {
-        doBasicTest("{{v g<caret>");
+    public void testCompleteTagsWithFCompactTxt() {
+        doBasicTestTxt("{{v f<caret>",
+            "form:checkbox:",
+            "form:display:",
+            "form:email:",
+            "form:hidden:",
+            "form:input:",
+            "form:radio:",
+            "form:secret:",
+            "form:select:",
+            "form:textarea:",
+            "form:url:");
     }
 
-    public void testCompleteTagsWithH() {
-        doBasicTest("<!--v h<caret>");
+    public void testCompleteTagsWithGXml() {
+        doBasicTestXml("<!--v g<caret>");
     }
 
-    public void testCompleteTagsWithHCompact() {
-        doBasicTest("{{v h<caret>");
+    public void testCompleteTagsWithGTxt() {
+        doBasicTestTxt("<!v g<caret>");
     }
 
-    public void testCompleteTagsWithI() {
-        doBasicTest("<!--v i<caret>");
+    public void testCompleteTagsWithGCompactXml() {
+        doBasicTestXml("{{v g<caret>");
     }
 
-    public void testCompleteTagsWithICompact() {
-        doBasicTest("{{v i<caret>");
+    public void testCompleteTagsWithGCompactTxt() {
+        doBasicTestTxt("{{v g<caret>");
     }
 
-    public void testCompleteTagsWithJ() {
-        doBasicTest("<!--v j<caret>");
+    public void testCompleteTagsWithHXml() {
+        doBasicTestXml("<!--v h<caret>");
     }
 
-    public void testCompleteTagsWithJCompact() {
-        doBasicTest("{{v j<caret>");
+    public void testCompleteTagsWithHTxt() {
+        doBasicTestTxt("<!v h<caret>");
     }
 
-    public void testCompleteTagsWithK() {
-        doBasicTest("<!--v k<caret>");
+    public void testCompleteTagsWithHCompactXml() {
+        doBasicTestXml("{{v h<caret>");
     }
 
-    public void testCompleteTagsWithKCompact() {
-        doBasicTest("{{v k<caret>");
+    public void testCompleteTagsWithHCompactTxt() {
+        doBasicTestTxt("{{v h<caret>");
     }
 
-    public void testCompleteTagsWithL() {
-        doBasicTest("<!--v l<caret>",
+    public void testCompleteTagsWithIXml() {
+        doBasicTestXml("<!--v i<caret>");
+    }
+
+    public void testCompleteTagsWithITxt() {
+        doBasicTestTxt("<!v i<caret>");
+    }
+
+    public void testCompleteTagsWithICompactXml() {
+        doBasicTestXml("{{v i<caret>");
+    }
+
+    public void testCompleteTagsWithICompactTxt() {
+        doBasicTestTxt("{{v i<caret>");
+    }
+
+    public void testCompleteTagsWithJXml() {
+        doBasicTestXml("<!--v j<caret>");
+    }
+
+    public void testCompleteTagsWithJTxt() {
+        doBasicTestTxt("<!v j<caret>");
+    }
+
+    public void testCompleteTagsWithJCompactXml() {
+        doBasicTestXml("{{v j<caret>");
+    }
+
+    public void testCompleteTagsWithJCompactTxt() {
+        doBasicTestTxt("{{v j<caret>");
+    }
+
+    public void testCompleteTagsWithKXml() {
+        doBasicTestXml("<!--v k<caret>");
+    }
+
+    public void testCompleteTagsWithKTxt() {
+        doBasicTestTxt("<!v k<caret>");
+    }
+
+    public void testCompleteTagsWithKCompactXml() {
+        doBasicTestXml("{{v k<caret>");
+    }
+
+    public void testCompleteTagsWithKCompactTxt() {
+        doBasicTestTxt("{{v k<caret>");
+    }
+
+    public void testCompleteTagsWithLXml() {
+        doBasicTestXml("<!--v l<caret>",
             "l10n:",
             "lang:");
     }
 
-    public void testCompleteTagsWithLCompact() {
-        doBasicTest("{{v l<caret>",
+    public void testCompleteTagsWithLTxt() {
+        doBasicTestTxt("<!v l<caret>",
             "l10n:",
             "lang:");
     }
 
-    public void testCompleteTagsWithM() {
-        doBasicTest("<!--v m<caret>");
+    public void testCompleteTagsWithLCompactXml() {
+        doBasicTestXml("{{v l<caret>",
+            "l10n:",
+            "lang:");
     }
 
-    public void testCompleteTagsWithMCompact() {
-        doBasicTest("{{v m<caret>");
+    public void testCompleteTagsWithLCompactTxt() {
+        doBasicTestTxt("{{v l<caret>",
+            "l10n:",
+            "lang:");
     }
 
-    public void testCompleteTagsWithN() {
-        doBasicTest("<!--v n<caret>");
+    public void testCompleteTagsWithMXml() {
+        doBasicTestXml("<!--v m<caret>");
     }
 
-    public void testCompleteTagsWithNCompact() {
-        doBasicTest("{{v n<caret>");
+    public void testCompleteTagsWithMTxt() {
+        doBasicTestTxt("<!v m<caret>");
     }
 
-    public void testCompleteTagsWithO() {
-        doBasicTest("<!--v o<caret>");
+    public void testCompleteTagsWithMCompactXml() {
+        doBasicTestXml("{{v m<caret>");
     }
 
-    public void testCompleteTagsWithOCompact() {
-        doBasicTest("{{v o<caret>");
+    public void testCompleteTagsWithMCompactTxt() {
+        doBasicTestTxt("{{v m<caret>");
     }
 
-    public void testCompleteTagsWithP() {
-        doBasicTest("<!--v p<caret>",
+    public void testCompleteTagsWithNXml() {
+        doBasicTestXml("<!--v n<caret>");
+    }
+
+    public void testCompleteTagsWithNTxt() {
+        doBasicTestTxt("<!v n<caret>");
+    }
+
+    public void testCompleteTagsWithNCompactXml() {
+        doBasicTestXml("{{v n<caret>");
+    }
+
+    public void testCompleteTagsWithNCompactTxt() {
+        doBasicTestTxt("{{v n<caret>");
+    }
+
+    public void testCompleteTagsWithOXml() {
+        doBasicTestXml("<!--v o<caret>");
+    }
+
+    public void testCompleteTagsWithOTxt() {
+        doBasicTestTxt("<!v o<caret>");
+    }
+
+    public void testCompleteTagsWithOCompactXml() {
+        doBasicTestXml("{{v o<caret>");
+    }
+
+    public void testCompleteTagsWithOCompactTxt() {
+        doBasicTestTxt("{{v o<caret>");
+    }
+
+    public void testCompleteTagsWithPXml() {
+        doBasicTestXml("<!--v p<caret>",
             "param:",
             "property:");
     }
 
-    public void testCompleteTagsWithPCompact() {
-        doBasicTest("{{v p<caret>",
+    public void testCompleteTagsWithPTxt() {
+        doBasicTestTxt("<!v p<caret>",
             "param:",
             "property:");
     }
 
-    public void testCompleteTagsWithQ() {
-        doBasicTest("<!--v q<caret>");
+    public void testCompleteTagsWithPCompactXml() {
+        doBasicTestXml("{{v p<caret>",
+            "param:",
+            "property:");
     }
 
-    public void testCompleteTagsWithQCompact() {
-        doBasicTest("{{v q<caret>");
+    public void testCompleteTagsWithPCompactTxt() {
+        doBasicTestTxt("{{v p<caret>",
+            "param:",
+            "property:");
     }
 
-    public void testCompleteTagsWithR() {
-        doBasicTest("<!--v r<caret>",
+    public void testCompleteTagsWithQXml() {
+        doBasicTestXml("<!--v q<caret>");
+    }
+
+    public void testCompleteTagsWithQTxt() {
+        doBasicTestTxt("<!v q<caret>");
+    }
+
+    public void testCompleteTagsWithQCompactXml() {
+        doBasicTestXml("{{v q<caret>");
+    }
+
+    public void testCompleteTagsWithQCompactTxt() {
+        doBasicTestTxt("{{v q<caret>");
+    }
+
+    public void testCompleteTagsWithRXml() {
+        doBasicTestXml("<!--v r<caret>",
             "render:",
             "route:",
             "route:action:",
             "route:inputs:");
     }
 
-    public void testCompleteTagsWithRCompact() {
-        doBasicTest("{{v r<caret>",
+    public void testCompleteTagsWithRTxt() {
+        doBasicTestTxt("<!v r<caret>",
             "render:",
             "route:",
             "route:action:",
             "route:inputs:");
     }
 
-    public void testCompleteTagsWithS() {
-        doBasicTest("<!--v s<caret>",
+    public void testCompleteTagsWithRCompactXml() {
+        doBasicTestXml("{{v r<caret>",
+            "render:",
+            "route:",
+            "route:action:",
+            "route:inputs:");
+    }
+
+    public void testCompleteTagsWithRCompactTxt() {
+        doBasicTestTxt("{{v r<caret>",
+            "render:",
+            "route:",
+            "route:action:",
+            "route:inputs:");
+    }
+
+    public void testCompleteTagsWithSXml() {
+        doBasicTestXml("<!--v s<caret>",
             "server:rootUrl");
     }
 
-    public void testCompleteTagsWithSCompact() {
-        doBasicTest("{{v s<caret>",
+    public void testCompleteTagsWithSTxt() {
+        doBasicTestTxt("<!v s<caret>",
             "server:rootUrl");
     }
 
-    public void testCompleteTagsWithT() {
-        doBasicTest("<!--v t<caret>");
+    public void testCompleteTagsWithSCompactXml() {
+        doBasicTestXml("{{v s<caret>",
+            "server:rootUrl");
     }
 
-    public void testCompleteTagsWithTCompact() {
-        doBasicTest("{{v t<caret>");
+    public void testCompleteTagsWithSCompactTxt() {
+        doBasicTestTxt("{{v s<caret>",
+            "server:rootUrl");
     }
 
-    public void testCompleteTagsWithU() {
-        doBasicTest("<!--v u<caret>");
+    public void testCompleteTagsWithTXml() {
+        doBasicTestXml("<!--v t<caret>");
     }
 
-    public void testCompleteTagsWithUCompact() {
-        doBasicTest("{{v u<caret>");
+    public void testCompleteTagsWithTTxt() {
+        doBasicTestTxt("<!v t<caret>");
     }
 
-    public void testCompleteTagsWithV() {
-        doBasicTest("<!--v v<caret>");
+    public void testCompleteTagsWithTCompactXml() {
+        doBasicTestXml("{{v t<caret>");
     }
 
-    public void testCompleteTagsWithVCompact() {
-        doBasicTest("{{v v<caret>");
+    public void testCompleteTagsWithTCompactTxt() {
+        doBasicTestTxt("{{v t<caret>");
     }
 
-    // TODO
-//    public void testCompleteTagsWithW() {
-//        doBasicTest("<!--v w<caret>",
+    public void testCompleteTagsWithUXml() {
+        doBasicTestXml("<!--v u<caret>");
+    }
+
+    public void testCompleteTagsWithUTxt() {
+        doBasicTestTxt("<!v u<caret>");
+    }
+
+    public void testCompleteTagsWithUCompactXml() {
+        doBasicTestXml("{{v u<caret>");
+    }
+
+    public void testCompleteTagsWithUCompactTxt() {
+        doBasicTestTxt("{{v u<caret>");
+    }
+
+    public void testCompleteTagsWithVXml() {
+        doBasicTestXml("<!--v v<caret>");
+    }
+
+    public void testCompleteTagsWithVTxt() {
+        doBasicTestTxt("<!v v<caret>");
+    }
+
+    public void testCompleteTagsWithVCompactXml() {
+        doBasicTestXml("{{v v<caret>");
+    }
+
+    public void testCompleteTagsWithVCompactTxt() {
+        doBasicTestTxt("{{v v<caret>");
+    }
+
+    // TODO : not sure why this is failing
+//    public void testCompleteTagsWithWXml() {
+//        doBasicTestXml("<!--v w<caret>",
 //            "webapp:rootUrl");
 //    }
 //
-//    public void testCompleteTagsWithWCompact() {
-//        doBasicTest("{{v w<caret>",
+//    public void testCompleteTagsWithWCompactXml() {
+//        doBasicTestXml("{{v w<caret>",
 //            "webapp:rootUrl");
 //    }
 
-    public void testCompleteTagsWithX() {
-        doBasicTest("<!--v x<caret>");
+    public void testCompleteTagsWithXXml() {
+        doBasicTestXml("<!--v x<caret>");
+    }
+    public void testCompleteTagsWithXTxt() {
+        doBasicTestTxt("<!v x<caret>");
     }
 
-    public void testCompleteTagsWithXCompact() {
-        doBasicTest("{{v x<caret>");
+    public void testCompleteTagsWithXCompactXml() {
+        doBasicTestXml("{{v x<caret>");
     }
 
-    public void testCompleteTagsWithY() {
-        doBasicTest("<!--v y<caret>");
+    public void testCompleteTagsWithXCompactTxt() {
+        doBasicTestTxt("{{v x<caret>");
     }
 
-    public void testCompleteTagsWithYCompact() {
-        doBasicTest("{{v y<caret>");
+    public void testCompleteTagsWithYXml() {
+        doBasicTestXml("<!--v y<caret>");
     }
 
-    public void testCompleteTagsWithZ() {
-        doBasicTest("<!--v z<caret>");
+    public void testCompleteTagsWithYTxt() {
+        doBasicTestTxt("<v y<caret>");
     }
 
-    public void testCompleteTagsWithZCompact() {
-        doBasicTest("{{v z<caret>");
+    public void testCompleteTagsWithYCompactXml() {
+        doBasicTestXml("{{v y<caret>");
+    }
+
+    public void testCompleteTagsWithYCompactTxt() {
+        doBasicTestTxt("{{v y<caret>");
+    }
+
+    public void testCompleteTagsWithZXml() {
+        doBasicTestXml("<!--v z<caret>");
+    }
+
+    public void testCompleteTagsWithZTxt() {
+        doBasicTestTxt("<!v z<caret>");
+    }
+
+    public void testCompleteTagsWithZCompactXml() {
+        doBasicTestXml("{{v z<caret>");
+    }
+
+    public void testCompleteTagsWithZCompactTxt() {
+        doBasicTestTxt("{{v z<caret>");
     }
 }
