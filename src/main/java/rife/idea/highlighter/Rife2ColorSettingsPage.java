@@ -79,8 +79,15 @@ public class Rife2ColorSettingsPage implements ColorSettingsPage {
     static {
         SYNTAX_HIGHLIGHTER = SyntaxHighlighterFactory.getSyntaxHighlighter(Rife2Language.INSTANCE, null, null);
         DESCRIPTORS = new AttributesDescriptor[]{
-            new AttributesDescriptor("Name", Rife2Highlighter.NAME),
-            new AttributesDescriptor("Tag", Rife2Highlighter.TAG),
+            new AttributesDescriptor("Commented", Rife2Highlighter.COMMENTED),
+            new AttributesDescriptor("Name include", Rife2Highlighter.NAME_INCLUDE),
+            new AttributesDescriptor("Name comment", Rife2Highlighter.NAME_COMMENT),
+            new AttributesDescriptor("Name block", Rife2Highlighter.NAME_BLOCK),
+            new AttributesDescriptor("Name value", Rife2Highlighter.NAME_VALUE),
+            new AttributesDescriptor("Tag include", Rife2Highlighter.TAG_INCLUDE),
+            new AttributesDescriptor("Tag comment", Rife2Highlighter.TAG_COMMENT),
+            new AttributesDescriptor("Tag block", Rife2Highlighter.TAG_BLOCK),
+            new AttributesDescriptor("Tag value", Rife2Highlighter.TAG_VALUE)
         };
 
         ourTags.put("outer_language", XmlHighlighterColors.HTML_TAG);

@@ -7,15 +7,19 @@ options { tokenVocab=TemplateLexer; }
 
 document        :   blockContent EOF ;
 
-blockContent    :   (blockData|tagI|tagC|tagV|tagVDefault|tagB|tagBV|tagBA)* ;
-valueContent    :   (valueData|tagI|tagC|tagB|tagBV|tagBA)*;
+blockContent    :   (blockData|tagI|tagC|tagCLong|tagV|tagVDefault|tagB|tagBV|tagBA)* ;
+valueContent    :   (valueData|tagI|tagC|tagCLong|tagB|tagBV|tagBA)*;
 
 tagI        :   TSTART_I TS_I TTagName_I TS_I? TSTERM_I
             |   CSTART_I CS_I CTagName_I TS_I? CSTERM_I
             ;
 
-tagC        :   TSTART_C TComment_C? TENDI_C commentData* TCLOSE_C
-            |   CSTART_C CComment_C? CENDI_C commentData* CCLOSE_C
+tagC        :   TSTART_C TS_C? TComment_C? TS_C? TSTERM_C
+            |   CSTART_C CS_C? CComment_C? CS_C? CSTERM_C
+            ;
+
+tagCLong    :   TSTART_C TS_C? TComment_C? TS_C? TENDI_C TTEXT_C* TCLOSE_C
+            |   CSTART_C CS_C? CComment_C? CS_C? CENDI_C CTEXT_C* CCLOSE_C
             ;
 
 tagV        :   TSTART_V TS_V TTagName_V TS_V? TSTERM_V
@@ -41,4 +45,3 @@ tagBA       :   TSTART_BA TS_B TTagName_B TS_B? TENDI_B blockContent TCLOSE_BA
 // Character data in the document not part of the tags
 blockData   :   TEXT+;
 valueData   :   TEXT+;
-commentData :   TEXT+;

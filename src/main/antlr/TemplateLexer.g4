@@ -29,15 +29,16 @@ fragment TTEXT  :   ( ('\\<!--' ('i'|'c'|'v'|'b'|'/'))    { tc == XML }? |
                 |   ( '<!--/' ~('i'|'c'|'v'|'b')          { tc == XML }? |
                       '<!/'   ~('i'|'c'|'v'|'b')          { tc == TXT }? )
                 ;
-//fragment TCOMM  :   ( ('\\<!--' ('c'|'/c'))               { tc == XML }? |
-//                      ('\\<!'   ('c'|'/c'))               { tc == TXT }? )
-//                |   ( ('<' ~'!' | '<!' ~'-' | '<!-' ~'-') { tc == XML }? |
-//                      ('<' ~'!')                          { tc == TXT }? )
-//                |   ( '<!--' ~('c'|'/')                   { tc == XML }? |
-//                      '<!'   ~('c'|'/')                   { tc == TXT }? )
-//                |   ( '<!--/' ~('c')                      { tc == XML }? |
-//                      '<!/'   ~('c')                      { tc == TXT }? )
-//                ;
+fragment TCOMM  :   ( ~'<'+)
+                |   ( ('\\<!--' ('/c'))               { tc == XML }? |
+                      ('\\<!'   ('/c'))               { tc == TXT }? )
+                |   ( ('<' ~'!' | '<!' ~'-' | '<!-' ~'-') { tc == XML }? |
+                      ('<' ~'!')                          { tc == TXT }? )
+                |   ( '<!--' ~('/')                       { tc == XML }? |
+                      '<!'   ~('/')                       { tc == TXT }? )
+                |   ( '<!--/' ~('c')                      { tc == XML }? |
+                      '<!/'   ~('c')                      { tc == TXT }? )
+                ;
 fragment
 TNameComment    :   ( ~[-]+ | '-' ~'-' | '--' ~'>' ) { tc == XML }?
                 |   ( ~[>]+ )                        { tc == TXT }?
@@ -59,11 +60,12 @@ fragment CTEXT  :   '\\{{' ('i'|'c'|'v'|'b'|'/')
                 |   '{{' ~('i'|'c'|'v'|'b'|'/')
                 |   '{{/' ~('i'|'c'|'v'|'b')
                 ;
-//fragment CCOMM  :   '\\{{' ('c'|'/c')
-//                |   '{' ~'{'
-//                |   '{{' ~('c'|'/')
-//                |   '{{/' ~('c')
-//                ;
+fragment CCOMM  :   ( ~'{'+)
+                |   '\\{{' ('/c')
+                |   '{' ~'{'
+                |   '{{' ~('/')
+                |   '{{/' ~('c')
+                ;
 fragment
 CNameComment    :   ~[}]+ | '}' ~'}' ;
 
@@ -73,6 +75,10 @@ fragment
 NameChar    :   NameStartChar
             |   NameEndChar
             |   '-' | '/'
+            ;
+
+fragment
+CommentChar :   NameChar | ' ' | '\t' | '\r' | '\n'
             ;
 
 fragment
@@ -97,10 +103,8 @@ NameStartChar
 TSTART_I    :   TSTART I                    -> pushMode(TINSIDE_I) ;
 CSTART_I    :   CSTART I                    -> pushMode(CINSIDE_I) ;
 
-TCLOSE_C    :   TTERM C TEND ;
-TSTART_C    :   TSTART C                    -> pushMode(TINSIDE_C) ;
-CCLOSE_C    :   CTERM C CEND ;
-CSTART_C    :   CSTART C                    -> pushMode(CINSIDE_C) ;
+TSTART_C    :   TSTART C                    -> mode(TINSIDE_C) ;
+CSTART_C    :   CSTART C                    -> mode(CINSIDE_C) ;
 
 TCLOSE_V    :   TTERM V TEND ;
 TSTART_V    :   TSTART V                    -> pushMode(TINSIDE_V) ;
@@ -167,8 +171,10 @@ CERRCHAR_I
 
 mode TINSIDE_C;
 
-TENDI_C       :   TEND                        -> popMode ;
-TComment_C    :   TNameComment ;
+TENDI_C       :   TEND                        -> mode(T_COMMENTED) ;
+TSTERM_C      :   STTERM                      -> mode(DEFAULT_MODE) ;
+TS_C          :   [ \t\r\n]+ ;
+TComment_C    :   NameStartChar | NameStartChar CommentChar* NameEndChar ;
 
 // Final "catch all" rule to make IDEA happy
 TERRCHAR_C
@@ -176,17 +182,41 @@ TERRCHAR_C
 	;
 
 // -------------------------------------------------------------------
+// MODE: Everything that's commented in a regular comment tag
+
+mode T_COMMENTED;
+
+TCLOSE_C      :   TTERM C TEND                -> mode(DEFAULT_MODE) ;
+TTEXT_C       :   TCOMM
+              |   '\\\\'
+              |   '\\'
+              ;
+
+// -------------------------------------------------------------------
 // MODE: Everything INSIDE of a compact comment tag
 
 mode CINSIDE_C;
 
-CENDI_C       :   CEND                        -> popMode ;
-CComment_C    :   CNameComment ;
+CENDI_C       :   CEND                        -> mode(C_COMMENTED) ;
+CSTERM_C      :   CTTERM                      -> mode(DEFAULT_MODE) ;
+CS_C          :   [ \t\r\n]+ ;
+CComment_C    :   NameStartChar | NameStartChar CommentChar* NameEndChar ;
 
 // Final "catch all" rule to make IDEA happy
 CERRCHAR_C
 	:	.	-> channel(HIDDEN)
 	;
+
+// -------------------------------------------------------------------
+// MODE: Everything that's commented in a compact comment tag
+
+mode C_COMMENTED;
+
+CCLOSE_C      :   CTERM C CEND                -> mode(DEFAULT_MODE) ;
+CTEXT_C       :   CCOMM
+              |   '\\\\'
+              |   '\\'
+              ;
 
 // -------------------------------------------------------------------
 // MODE: Everything INSIDE of a value tag
