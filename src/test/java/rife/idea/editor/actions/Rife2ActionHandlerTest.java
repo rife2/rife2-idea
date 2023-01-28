@@ -1,4 +1,4 @@
-package rife.editor.actions;
+package rife.idea.editor.actions;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.CommandProcessor;

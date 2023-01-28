@@ -45,6 +45,9 @@
         <!-- Code completion -->
         <typedHandler
                 implementation="rife.idea.editor.actions.Rife2TypedHandler"/>
+        <completion.contributor
+                language="RIFE2"
+                implementationClass="rife.idea.completion.Rife2FilteredValuesCompletionContributor"/>
 
         <!-- Formatting -->
         <lang.formatter

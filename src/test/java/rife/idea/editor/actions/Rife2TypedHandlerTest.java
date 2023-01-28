@@ -1,4 +1,4 @@
-package rife.editor.actions;
+package rife.idea.editor.actions;
 
 public class Rife2TypedHandlerTest extends Rife2ActionHandlerTest {
     public void testFirstCharTypedCompact() {

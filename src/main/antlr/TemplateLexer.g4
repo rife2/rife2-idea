@@ -103,24 +103,24 @@ CCLOSE_C    :   CTERM C CEND ;
 CSTART_C    :   CSTART C                    -> pushMode(CINSIDE_C) ;
 
 TCLOSE_V    :   TTERM V TEND ;
-TSTART_V    :   TSTART V                    -> pushMode(TINSIDE) ;
+TSTART_V    :   TSTART V                    -> pushMode(TINSIDE_V) ;
 CCLOSE_V    :   CTERM V CEND ;
-CSTART_V    :   CSTART V                    -> pushMode(CINSIDE) ;
+CSTART_V    :   CSTART V                    -> pushMode(CINSIDE_V) ;
 
 TCLOSE_B    :   TTERM B TEND ;
-TSTART_B    :   TSTART B                    -> pushMode(TINSIDE) ;
+TSTART_B    :   TSTART B                    -> pushMode(TINSIDE_B) ;
 CCLOSE_B    :   CTERM B CEND ;
-CSTART_B    :   CSTART B                    -> pushMode(CINSIDE) ;
+CSTART_B    :   CSTART B                    -> pushMode(CINSIDE_B) ;
 
 TCLOSE_BV   :   TTERM BV TEND ;
-TSTART_BV   :   TSTART BV                   -> pushMode(TINSIDE) ;
+TSTART_BV   :   TSTART BV                   -> pushMode(TINSIDE_B) ;
 CCLOSE_BV   :   CTERM BV CEND ;
-CSTART_BV   :   CSTART BV                   -> pushMode(CINSIDE) ;
+CSTART_BV   :   CSTART BV                   -> pushMode(CINSIDE_B) ;
 
 TCLOSE_BA   :   TTERM BA TEND ;
-TSTART_BA   :   TSTART BA                   -> pushMode(TINSIDE) ;
+TSTART_BA   :   TSTART BA                   -> pushMode(TINSIDE_B) ;
 CCLOSE_BA   :   CTERM BA CEND ;
-CSTART_BA   :   CSTART BA                   -> pushMode(CINSIDE) ;
+CSTART_BA   :   CSTART BA                   -> pushMode(CINSIDE_B) ;
 
 TEXT        :   FTEXT
             |   TTEXT
@@ -189,33 +189,65 @@ CERRCHAR_C
 	;
 
 // -------------------------------------------------------------------
-// MODE: Everything INSIDE of a regular tag
+// MODE: Everything INSIDE of a value tag
 
-mode TINSIDE;
+mode TINSIDE_V;
 
-TENDI       :   TEND                        -> popMode ;
-TSTERM      :   STTERM                      -> popMode ;
-TS          :   [ \t\r\n]+ ;
-TTagName    :   NameStartChar | NameStartChar NameChar* NameEndChar ;
+TENDI_V       :   TEND                        -> popMode ;
+TSTERM_V      :   STTERM                      -> popMode ;
+TS_V          :   [ \t\r\n]+ ;
+TTagName_V    :   NameStartChar | NameStartChar NameChar* NameEndChar ;
 
 // Final "catch all" rule to make IDEA happy
-TERRCHAR
+TERRCHAR_V
 	:	.	-> channel(HIDDEN)
 	;
 
 
 // -------------------------------------------------------------------
-// MODE: Everything INSIDE of a compact tag
+// MODE: Everything INSIDE of a compact value tag
 
-mode CINSIDE;
+mode CINSIDE_V;
 
-CENDI       :   CEND                        -> popMode ;
-CSTERM      :   CTTERM                      -> popMode ;
-CS          :   [ \t\r\n]+ ;
-CTagName    :   NameStartChar | NameStartChar NameChar* NameEndChar ;
+CENDI_V       :   CEND                        -> popMode ;
+CSTERM_V      :   CTTERM                      -> popMode ;
+CS_V          :   [ \t\r\n]+ ;
+CTagName_V    :   NameStartChar | NameStartChar NameChar* NameEndChar ;
 
 // Final "catch all" rule to make IDEA happy
-CERRCHAR
+CERRCHAR_V
+	:	.	-> channel(HIDDEN)
+	;
+
+
+// -------------------------------------------------------------------
+// MODE: Everything INSIDE of a block tag
+
+mode TINSIDE_B;
+
+TENDI_B       :   TEND                        -> popMode ;
+TSTERM_B      :   STTERM                      -> popMode ;
+TS_B          :   [ \t\r\n]+ ;
+TTagName_B    :   NameStartChar | NameStartChar NameChar* NameEndChar ;
+
+// Final "catch all" rule to make IDEA happy
+TERRCHAR_B
+	:	.	-> channel(HIDDEN)
+	;
+
+
+// -------------------------------------------------------------------
+// MODE: Everything INSIDE of a compact block tag
+
+mode CINSIDE_B;
+
+CENDI_B       :   CEND                        -> popMode ;
+CSTERM_B      :   CTTERM                      -> popMode ;
+CS_B          :   [ \t\r\n]+ ;
+CTagName_B    :   NameStartChar | NameStartChar NameChar* NameEndChar ;
+
+// Final "catch all" rule to make IDEA happy
+CERRCHAR_B
 	:	.	-> channel(HIDDEN)
 	;
 

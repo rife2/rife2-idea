@@ -18,24 +18,24 @@ tagC        :   TSTART_C TComment_C? TENDI_C commentData* TCLOSE_C
             |   CSTART_C CComment_C? CENDI_C commentData* CCLOSE_C
             ;
 
-tagV        :   TSTART_V TS TTagName TS? TSTERM
-            |   CSTART_V CS CTagName CS? CSTERM
+tagV        :   TSTART_V TS_V TTagName_V TS_V? TSTERM_V
+            |   CSTART_V CS_V CTagName_V CS_V? CSTERM_V
             ;
 
-tagVDefault :   TSTART_V TS TTagName TS? TENDI valueContent TCLOSE_V
-            |   CSTART_V CS CTagName CS? CENDI valueContent CCLOSE_V
+tagVDefault :   TSTART_V TS_V TTagName_V TS_V? TENDI_V valueContent TCLOSE_V
+            |   CSTART_V CS_V CTagName_V CS_V? CENDI_V valueContent CCLOSE_V
             ;
 
-tagB        :   TSTART_B TS TTagName TS? TENDI blockContent TCLOSE_B
-            |   CSTART_B CS CTagName CS? CENDI blockContent CCLOSE_B
+tagB        :   TSTART_B TS_B TTagName_B TS_B? TENDI_B blockContent TCLOSE_B
+            |   CSTART_B CS_B CTagName_B CS_B? CENDI_B blockContent CCLOSE_B
             ;
 
-tagBV       :   TSTART_BV TS TTagName TS? TENDI blockContent TCLOSE_BV
-            |   CSTART_BV CS CTagName CS? CENDI blockContent CCLOSE_BV
+tagBV       :   TSTART_BV TS_B TTagName_B TS_B? TENDI_B blockContent TCLOSE_BV
+            |   CSTART_BV CS_B CTagName_B CS_B? CENDI_B blockContent CCLOSE_BV
             ;
 
-tagBA       :   TSTART_BA TS TTagName TS? TENDI blockContent TCLOSE_BA
-            |   CSTART_BA CS CTagName CS? CENDI blockContent CCLOSE_BA
+tagBA       :   TSTART_BA TS_B TTagName_B TS_B? TENDI_B blockContent TCLOSE_BA
+            |   CSTART_BA CS_B CTagName_B CS_B? CENDI_B blockContent CCLOSE_BA
             ;
 
 // Character data in the document not part of the tags

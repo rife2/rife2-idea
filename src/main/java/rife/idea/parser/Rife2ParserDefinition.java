@@ -25,6 +25,10 @@ public class Rife2ParserDefinition implements ParserDefinition {
         new IFileElementType(Rife2Language.INSTANCE);
 
     public static TokenIElementType TEXT;
+    public static TokenIElementType CTagName_V;
+    public static TokenIElementType CS_V;
+    public static TokenIElementType TTagName_V;
+    public static TokenIElementType TS_V;
 
     static {
         PSIElementTypeFactory.defineLanguageIElementTypes(Rife2Language.INSTANCE,
@@ -33,6 +37,10 @@ public class Rife2ParserDefinition implements ParserDefinition {
         var tokenIElementTypes =
             PSIElementTypeFactory.getTokenIElementTypes(Rife2Language.INSTANCE);
         TEXT = tokenIElementTypes.get(TemplateLexer.TEXT);
+        CTagName_V = tokenIElementTypes.get(TemplateLexer.CTagName_V);
+        CS_V = tokenIElementTypes.get(TemplateLexer.CS_V);
+        TTagName_V = tokenIElementTypes.get(TemplateLexer.TTagName_V);
+        TS_V = tokenIElementTypes.get(TemplateLexer.TS_V);
     }
 
     public static final TokenSet COMMENTS =
@@ -46,8 +54,10 @@ public class Rife2ParserDefinition implements ParserDefinition {
             TemplateLexer.TComment_C,
             TemplateLexer.CTagName_I,
             TemplateLexer.CComment_C,
-            TemplateLexer.TTagName,
-            TemplateLexer.CTagName);
+            TemplateLexer.TTagName_V,
+            TemplateLexer.CTagName_V,
+            TemplateLexer.TTagName_B,
+            TemplateLexer.CTagName_B);
 
     public static final TokenSet TAGS =
         PSIElementTypeFactory.createTokenSet(
@@ -64,9 +74,11 @@ public class Rife2ParserDefinition implements ParserDefinition {
             TemplateLexer.CCLOSE_BV,
             TemplateLexer.CCLOSE_V,
             TemplateLexer.CSTERM_I,
-            TemplateLexer.CSTERM,
+            TemplateLexer.CSTERM_V,
+            TemplateLexer.CSTERM_B,
             TemplateLexer.CENDI_C,
-            TemplateLexer.CENDI,
+            TemplateLexer.CENDI_V,
+            TemplateLexer.CENDI_B,
             TemplateLexer.TSTART_I,
             TemplateLexer.TSTART_C,
             TemplateLexer.TSTART_B,
@@ -79,13 +91,17 @@ public class Rife2ParserDefinition implements ParserDefinition {
             TemplateLexer.TCLOSE_BV,
             TemplateLexer.TCLOSE_V,
             TemplateLexer.TSTERM_I,
-            TemplateLexer.TSTERM,
+            TemplateLexer.TSTERM_V,
+            TemplateLexer.TSTERM_B,
             TemplateLexer.TENDI_C,
-            TemplateLexer.TENDI,
+            TemplateLexer.TENDI_V,
+            TemplateLexer.TENDI_B,
             TemplateLexer.CS_I,
             TemplateLexer.TS_I,
-            TemplateLexer.CS,
-            TemplateLexer.TS);
+            TemplateLexer.CS_V,
+            TemplateLexer.TS_V,
+            TemplateLexer.CS_B,
+            TemplateLexer.TS_B);
 
     @NotNull
     @Override
