@@ -168,7 +168,7 @@ mode TINSIDE_C;
 TENDI_C       :   TEND                        -> mode(T_COMMENTED) ;
 TSTERM_C      :   STTERM                      -> mode(DEFAULT_MODE) ;
 TS_C          :   [ \t\r\n]+ ;
-TComment_C    :   CommentChar* NameEndChar ;
+TComment_C    :   NameChar | NameChar CommentChar* NameEndChar ;
 
 // Final "catch all" rule to make IDEA happy
 TERRCHAR_C
@@ -194,7 +194,7 @@ mode CINSIDE_C;
 CENDI_C       :   CEND                        -> mode(C_COMMENTED) ;
 CSTERM_C      :   CTTERM                      -> mode(DEFAULT_MODE) ;
 CS_C          :   [ \t\r\n]+ ;
-CComment_C    :   CommentChar* NameEndChar ;
+CComment_C    :   NameChar | NameChar CommentChar* NameEndChar ;
 
 // Final "catch all" rule to make IDEA happy
 CERRCHAR_C

@@ -16,6 +16,7 @@ import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.jetbrains.annotations.NotNull;
+import rife.idea.Rife2LanguageHtml;
 import rife.idea.Rife2LanguageTxt;
 import rife.idea.psi.Rife2FileTxt;
 import rife.template.antlr.TemplateLexer;
@@ -25,25 +26,103 @@ public class Rife2ParserDefinitionTxt extends Rife2ParserDefinition {
     public static final IFileElementType FILE =
         new IFileElementType(Rife2LanguageTxt.INSTANCE);
 
-    public static TokenIElementType TEXT;
-    public static TokenIElementType CTagName_V;
-    public static TokenIElementType CS_V;
-    public static TokenIElementType TTagName_V;
-    public static TokenIElementType TS_V;
+    public static TokenIElementType
+        TSTART_I, CSTART_I, TSTART_C, CSTART_C, TCLOSE_V, TSTART_V,
+        CCLOSE_V, CSTART_V, TCLOSE_B, TSTART_B, CCLOSE_B, CSTART_B,
+        TCLOSE_BV, TSTART_BV, CCLOSE_BV, CSTART_BV, TCLOSE_BA,
+        TSTART_BA, CCLOSE_BA, CSTART_BA, TEXT, ERRCHAR, TSTERM_I,
+        TS_I, TTagName_I, TERRCHAR_I, CSTERM_I, CS_I, CTagName_I,
+        CERRCHAR_I, TENDI_C, TSTERM_C, TS_C, TComment_C, TERRCHAR_C,
+        TCLOSE_C, TTEXT_C, CENDI_C, CSTERM_C, CS_C, CComment_C,
+        CERRCHAR_C, CCLOSE_C, CTEXT_C, TENDI_V, TSTERM_V, TS_V,
+        TTagName_V, TERRCHAR_V, CENDI_V, CSTERM_V, CS_V, CTagName_V,
+        CERRCHAR_V, TENDI_B, TSTERM_B, TS_B, TTagName_B, TERRCHAR_B,
+        CENDI_B, CSTERM_B, CS_B, CTagName_B, CERRCHAR_B;
 
     static {
+        setupLanguageDefinition();
+    }
+
+    public static void setupLanguageDefinition() {
         PSIElementTypeFactory.defineLanguageIElementTypes(Rife2LanguageTxt.INSTANCE,
             TemplateParser.tokenNames,
             TemplateParser.ruleNames);
         var tokenIElementTypes =
             PSIElementTypeFactory.getTokenIElementTypes(Rife2LanguageTxt.INSTANCE);
 
+        TSTART_I = tokenIElementTypes.get(TemplateLexer.TSTART_I);
+        CSTART_I = tokenIElementTypes.get(TemplateLexer.CSTART_I);
+        TSTART_C = tokenIElementTypes.get(TemplateLexer.TSTART_C);
+        CSTART_C = tokenIElementTypes.get(TemplateLexer.CSTART_C);
+        TCLOSE_V = tokenIElementTypes.get(TemplateLexer.TCLOSE_V);
+        TSTART_V = tokenIElementTypes.get(TemplateLexer.TSTART_V);
+        CCLOSE_V = tokenIElementTypes.get(TemplateLexer.CCLOSE_V);
+        CSTART_V = tokenIElementTypes.get(TemplateLexer.CSTART_V);
+        TCLOSE_B = tokenIElementTypes.get(TemplateLexer.TCLOSE_B);
+        TSTART_B = tokenIElementTypes.get(TemplateLexer.TSTART_B);
+        CCLOSE_B = tokenIElementTypes.get(TemplateLexer.CCLOSE_B);
+        CSTART_B = tokenIElementTypes.get(TemplateLexer.CSTART_B);
+        TCLOSE_BV = tokenIElementTypes.get(TemplateLexer.TCLOSE_BV);
+        TSTART_BV = tokenIElementTypes.get(TemplateLexer.TSTART_BV);
+        CCLOSE_BV = tokenIElementTypes.get(TemplateLexer.CCLOSE_BV);
+        CSTART_BV = tokenIElementTypes.get(TemplateLexer.CSTART_BV);
+        TCLOSE_BA = tokenIElementTypes.get(TemplateLexer.TCLOSE_BA);
+        TSTART_BA = tokenIElementTypes.get(TemplateLexer.TSTART_BA);
+        CCLOSE_BA = tokenIElementTypes.get(TemplateLexer.CCLOSE_BA);
+        CSTART_BA = tokenIElementTypes.get(TemplateLexer.CSTART_BA);
         TEXT = tokenIElementTypes.get(TemplateLexer.TEXT);
-        CTagName_V = tokenIElementTypes.get(TemplateLexer.CTagName_V);
-        CS_V = tokenIElementTypes.get(TemplateLexer.CS_V);
-        TTagName_V = tokenIElementTypes.get(TemplateLexer.TTagName_V);
+        ERRCHAR = tokenIElementTypes.get(TemplateLexer.ERRCHAR);
+        TSTERM_I = tokenIElementTypes.get(TemplateLexer.TSTERM_I);
+        TS_I = tokenIElementTypes.get(TemplateLexer.TS_I);
+        TTagName_I = tokenIElementTypes.get(TemplateLexer.TTagName_I);
+        TERRCHAR_I = tokenIElementTypes.get(TemplateLexer.TERRCHAR_I);
+        CSTERM_I = tokenIElementTypes.get(TemplateLexer.CSTERM_I);
+        CS_I = tokenIElementTypes.get(TemplateLexer.CS_I);
+        CTagName_I = tokenIElementTypes.get(TemplateLexer.CTagName_I);
+        CERRCHAR_I = tokenIElementTypes.get(TemplateLexer.CERRCHAR_I);
+        TENDI_C = tokenIElementTypes.get(TemplateLexer.TENDI_C);
+        TSTERM_C = tokenIElementTypes.get(TemplateLexer.TSTERM_C);
+        TS_C = tokenIElementTypes.get(TemplateLexer.TS_C);
+        TComment_C = tokenIElementTypes.get(TemplateLexer.TComment_C);
+        TERRCHAR_C = tokenIElementTypes.get(TemplateLexer.TERRCHAR_C);
+        TCLOSE_C = tokenIElementTypes.get(TemplateLexer.TCLOSE_C);
+        TTEXT_C = tokenIElementTypes.get(TemplateLexer.TTEXT_C);
+        CENDI_C = tokenIElementTypes.get(TemplateLexer.CENDI_C);
+        CSTERM_C = tokenIElementTypes.get(TemplateLexer.CSTERM_C);
+        CS_C = tokenIElementTypes.get(TemplateLexer.CS_C);
+        CComment_C = tokenIElementTypes.get(TemplateLexer.CComment_C);
+        CERRCHAR_C = tokenIElementTypes.get(TemplateLexer.CERRCHAR_C);
+        CCLOSE_C = tokenIElementTypes.get(TemplateLexer.CCLOSE_C);
+        CTEXT_C = tokenIElementTypes.get(TemplateLexer.CTEXT_C);
+        TENDI_V = tokenIElementTypes.get(TemplateLexer.TENDI_V);
+        TSTERM_V = tokenIElementTypes.get(TemplateLexer.TSTERM_V);
         TS_V = tokenIElementTypes.get(TemplateLexer.TS_V);
+        TTagName_V = tokenIElementTypes.get(TemplateLexer.TTagName_V);
+        TERRCHAR_V = tokenIElementTypes.get(TemplateLexer.TERRCHAR_V);
+        CENDI_V = tokenIElementTypes.get(TemplateLexer.CENDI_V);
+        CSTERM_V = tokenIElementTypes.get(TemplateLexer.CSTERM_V);
+        CS_V = tokenIElementTypes.get(TemplateLexer.CS_V);
+        CTagName_V = tokenIElementTypes.get(TemplateLexer.CTagName_V);
+        CERRCHAR_V = tokenIElementTypes.get(TemplateLexer.CERRCHAR_V);
+        TENDI_B = tokenIElementTypes.get(TemplateLexer.TENDI_B);
+        TSTERM_B = tokenIElementTypes.get(TemplateLexer.TSTERM_B);
+        TS_B = tokenIElementTypes.get(TemplateLexer.TS_B);
+        TTagName_B = tokenIElementTypes.get(TemplateLexer.TTagName_B);
+        TERRCHAR_B = tokenIElementTypes.get(TemplateLexer.TERRCHAR_B);
+        CENDI_B = tokenIElementTypes.get(TemplateLexer.CENDI_B);
+        CSTERM_B = tokenIElementTypes.get(TemplateLexer.CSTERM_B);
+        CS_B = tokenIElementTypes.get(TemplateLexer.CS_B);
+        CTagName_B = tokenIElementTypes.get(TemplateLexer.CTagName_B);
+        CERRCHAR_B = tokenIElementTypes.get(TemplateLexer.CERRCHAR_B);
     }
+
+    public static final TokenSet COMMENTS =
+        PSIElementTypeFactory.createTokenSet(
+            Rife2LanguageHtml.INSTANCE,
+            TemplateLexer.TTEXT_C,
+            TemplateLexer.CTEXT_C,
+            TemplateLexer.TComment_C,
+            TemplateLexer.CComment_C);
 
     public static final TokenSet COMMENTED =
         PSIElementTypeFactory.createTokenSet(
@@ -149,7 +228,7 @@ public class Rife2ParserDefinitionTxt extends Rife2ParserDefinition {
 
     @NotNull
     public TokenSet getCommentTokens() {
-        return COMMENTED;
+        return COMMENTS;
     }
 
     @NotNull
