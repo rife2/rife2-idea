@@ -12,16 +12,12 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.templateLanguages.TemplateDataLanguageMappings;
 import org.jetbrains.annotations.*;
 import rife.idea.Rife2LanguageHtml;
-import rife.idea.highlighter.Rife2TemplateHighlighter;
 
-import javax.swing.*;
 import java.nio.charset.Charset;
 
 public abstract class Rife2FileType extends XmlLikeFileType implements TemplateLanguageFileType {
     protected Rife2FileType(Language language) {
         super(language);
-
-        FileTypeEditorHighlighterProviders.INSTANCE.addExplicitExtension(this, ((project, fileType, virtualFile, colors) -> new Rife2TemplateHighlighter(project, virtualFile, colors)));
     }
 
     @Override

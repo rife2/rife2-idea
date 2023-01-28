@@ -1,8 +1,10 @@
 package rife.idea.file;
 
+import com.intellij.openapi.fileTypes.FileTypeEditorHighlighterProviders;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import org.jetbrains.annotations.*;
 import rife.idea.Rife2LanguageHtml;
+import rife.idea.highlighter.Rife2TemplateHighlighterHtml;
 
 import javax.swing.*;
 
@@ -11,6 +13,8 @@ public class Rife2FileTypeHtml extends Rife2FileType {
 
     private Rife2FileTypeHtml() {
         super(Rife2LanguageHtml.INSTANCE);
+
+        FileTypeEditorHighlighterProviders.INSTANCE.addExplicitExtension(this, ((project, fileType, virtualFile, colors) -> new Rife2TemplateHighlighterHtml(project, virtualFile, colors)));
     }
 
     @NonNls
@@ -37,6 +41,6 @@ public class Rife2FileTypeHtml extends Rife2FileType {
     @Nullable
     @Override
     public Icon getIcon() {
-        return Rife2Icons.FILE;
+        return Rife2Icons.FILE_HTML;
     }
 }

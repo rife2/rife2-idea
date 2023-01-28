@@ -13,13 +13,13 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.templateLanguages.TemplateDataLanguageMappings;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import rife.idea.Rife2LanguageHtml;
-import rife.idea.parser.Rife2ParserDefinitionHtml;
+import rife.idea.Rife2LanguageSvg;
+import rife.idea.parser.Rife2ParserDefinitionSvg;
 
-public class Rife2TemplateHighlighter extends LayeredLexerEditorHighlighter {
-    public Rife2TemplateHighlighter(@Nullable Project project, @Nullable VirtualFile virtualFile, @NotNull EditorColorsScheme colors) {
+public class Rife2TemplateHighlighterSvg extends LayeredLexerEditorHighlighter {
+    public Rife2TemplateHighlighterSvg(@Nullable Project project, @Nullable VirtualFile virtualFile, @NotNull EditorColorsScheme colors) {
         // create the main highlighter
-        super(new Rife2SyntaxHighlighterHtml(), colors);
+        super(new Rife2SyntaxHighlighterSvg(), colors);
 
         FileType type = null;
         if (project == null || virtualFile == null) {
@@ -30,11 +30,11 @@ public class Rife2TemplateHighlighter extends LayeredLexerEditorHighlighter {
                 type = language.getAssociatedFileType();
             }
             if (type == null) {
-                type = Rife2LanguageHtml.getDefaultTemplateLang();
+                type = Rife2LanguageSvg.getDefaultTemplateLang();
             }
         }
 
         var outerHighlighter = SyntaxHighlighterFactory.getSyntaxHighlighter(type, project, virtualFile);
-        registerLayer(Rife2ParserDefinitionHtml.TEXT, new LayerDescriptor(outerHighlighter, ""));
+        registerLayer(Rife2ParserDefinitionSvg.TEXT, new LayerDescriptor(outerHighlighter, ""));
     }
 }

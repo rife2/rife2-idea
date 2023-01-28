@@ -22,25 +22,61 @@
                 fieldName="INSTANCE"
                 language="RIFE2HTML"
                 patterns="*.html"/>
+        <fileType
+                name="RIFE2JSON"
+                implementationClass="rife.idea.file.Rife2FileTypeJson"
+                fieldName="INSTANCE"
+                language="RIFE2JSON"
+                patterns="*.json"/>
+        <fileType
+                name="RIFE2SVG"
+                implementationClass="rife.idea.file.Rife2FileTypeSvg"
+                fieldName="INSTANCE"
+                language="RIFE2SVG"
+                patterns="*.svg"/>
 
         <!-- Template parser -->
         <lang.parserDefinition
                 language="RIFE2HTML"
                 implementationClass="rife.idea.parser.Rife2ParserDefinitionHtml"/>
+        <lang.parserDefinition
+                language="RIFE2JSON"
+                implementationClass="rife.idea.parser.Rife2ParserDefinitionJson"/>
+        <lang.parserDefinition
+                language="RIFE2SVG"
+                implementationClass="rife.idea.parser.Rife2ParserDefinitionSvg"/>
 
         <!-- Syntax highlighting -->
         <lang.syntaxHighlighterFactory
                 language="RIFE2HTML"
                 implementationClass="rife.idea.highlighter.Rife2SyntaxHighlighterFactoryHtml"/>
+        <lang.syntaxHighlighterFactory
+                language="RIFE2JSON"
+                implementationClass="rife.idea.highlighter.Rife2SyntaxHighlighterFactoryJson"/>
+        <lang.syntaxHighlighterFactory
+                language="RIFE2SVG"
+                implementationClass="rife.idea.highlighter.Rife2SyntaxHighlighterFactorySvg"/>
 
         <!-- Language factories -->
         <lang.fileViewProviderFactory
                 language="RIFE2HTML"
                 implementationClass="rife.idea.file.Rife2FileViewProviderFactoryHtml"/>
+        <lang.fileViewProviderFactory
+                language="RIFE2JSON"
+                implementationClass="rife.idea.file.Rife2FileViewProviderFactoryJson"/>
+        <lang.fileViewProviderFactory
+                language="RIFE2SVG"
+                implementationClass="rife.idea.file.Rife2FileViewProviderFactorySvg"/>
 
         <!-- Editor -->
         <lang.commenter
                 language="RIFE2HTML"
+                implementationClass="rife.idea.editor.comments.Rife2CommenterXml"/>
+        <lang.commenter
+                language="RIFE2JSON"
+                implementationClass="rife.idea.editor.comments.Rife2CommenterTxt"/>
+        <lang.commenter
+                language="RIFE2SVG"
                 implementationClass="rife.idea.editor.comments.Rife2CommenterXml"/>
 
         <!-- Code completion -->
@@ -48,6 +84,12 @@
                 implementation="rife.idea.editor.actions.Rife2TypedHandler"/>
         <completion.contributor
                 language="RIFE2HTML"
+                implementationClass="rife.idea.completion.Rife2FilteredValuesCompletionContributor"/>
+        <completion.contributor
+                language="RIFE2JSON"
+                implementationClass="rife.idea.completion.Rife2FilteredValuesCompletionContributor"/>
+        <completion.contributor
+                language="RIFE2SVG"
                 implementationClass="rife.idea.completion.Rife2FilteredValuesCompletionContributor"/>
 
         <!-- Formatting -->
@@ -57,6 +99,18 @@
         <lang.substitutor
                 language="HTML"
                 implementationClass="rife.idea.file.Rife2LanguageSubstitutorHtml"/>
+        <lang.formatter
+                language="RIFE2JSON"
+                implementationClass="rife.idea.format.Rife2FormattingModelBuilderJson"/>
+        <lang.substitutor
+                language="JSON"
+                implementationClass="rife.idea.file.Rife2LanguageSubstitutorJson"/>
+        <lang.formatter
+                language="RIFE2SVG"
+                implementationClass="rife.idea.format.Rife2FormattingModelBuilderSvg"/>
+        <lang.substitutor
+                language="XML"
+                implementationClass="rife.idea.file.Rife2LanguageSubstitutorXml"/>
     </extensions>
 
     <applicationListeners>

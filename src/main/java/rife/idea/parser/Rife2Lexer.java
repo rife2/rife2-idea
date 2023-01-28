@@ -30,6 +30,12 @@ public abstract class Rife2Lexer extends MergingLexerAdapterBase {
         return new ANTLRLexerAdaptor(language, lexer);
     }
 
+    public static Lexer createTxtLexer(Language language) {
+        var lexer = new TemplateLexer(null);
+        lexer.tc = TemplateConfig.TXT;
+        return new ANTLRLexerAdaptor(language, lexer);
+    }
+
     @Override
     public MergeFunction getMergeFunction() {
         return MERGE_FUNCTION;

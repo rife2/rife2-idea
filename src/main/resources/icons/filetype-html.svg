@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(0.229885,0,0,0.229885,2.00549,-50.4902)">
+        <g transform="matrix(4.85016,0,0,7.1253,-46.0267,204.79)">
+            <path d="M23.174,4.749L10.723,9.437L23.174,14.08L23.174,16.761L7.691,10.638L7.691,8.206L23.174,2.083L23.174,4.749Z" style="fill:rgb(102,148,98);fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(-4.85016,-9.42256e-16,5.05751e-16,-7.1253,202.579,339.058)">
+            <path d="M23.174,4.749L10.723,9.437L23.174,14.08L23.174,16.761L7.691,10.638L7.691,8.206L23.174,2.083L23.174,4.749Z" style="fill:rgb(102,148,98);fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(4.35,0,0,4.35,-29.3612,240.746)">
+            <g transform="matrix(17,0,0,17,45.8547,35.1464)">
+            </g>
+            <text x="3.64px" y="35.146px" style="font-family:'DejaVuSansMono-Bold', 'DejaVu Sans Mono', monospace;font-weight:700;font-size:17px;fill:rgb(136,136,136);">R<tspan x="14.3px 24.96px 35.62px " y="35.146px 35.146px 35.146px ">IFE</tspan></text>
+        </g>
+    </g>
+</svg>

@@ -4,7 +4,7 @@ import com.intellij.codeInsight.completion.*;
 import com.intellij.codeInsight.lookup.LookupElementBuilder;
 import com.intellij.patterns.PlatformPatterns;
 import org.jetbrains.annotations.NotNull;
-import rife.idea.parser.Rife2ParserDefinitionHtml;
+import rife.idea.parser.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +50,18 @@ public class Rife2FilteredValuesCompletionContributor extends CompletionContribu
                 result.addAllElements(FILTERED_VALUES);
             } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionHtml.TTagName_V).accepts(parameters.getPosition()) &&
                        PlatformPatterns.psiElement(Rife2ParserDefinitionHtml.TS_V).accepts(parameters.getPosition().getPrevSibling())) {
+                result.addAllElements(FILTERED_VALUES);
+            } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionJson.CTagName_V).accepts(parameters.getPosition()) &&
+                       PlatformPatterns.psiElement(Rife2ParserDefinitionJson.CS_V).accepts(parameters.getPosition().getPrevSibling())) {
+                result.addAllElements(FILTERED_VALUES);
+            } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionJson.TTagName_V).accepts(parameters.getPosition()) &&
+                       PlatformPatterns.psiElement(Rife2ParserDefinitionJson.TS_V).accepts(parameters.getPosition().getPrevSibling())) {
+                result.addAllElements(FILTERED_VALUES);
+            } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.CTagName_V).accepts(parameters.getPosition()) &&
+                       PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.CS_V).accepts(parameters.getPosition().getPrevSibling())) {
+                result.addAllElements(FILTERED_VALUES);
+            } else if (PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.TTagName_V).accepts(parameters.getPosition()) &&
+                       PlatformPatterns.psiElement(Rife2ParserDefinitionSvg.TS_V).accepts(parameters.getPosition().getPrevSibling())) {
                 result.addAllElements(FILTERED_VALUES);
             }
         }
