@@ -1,5 +1,9 @@
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+import java.net.*
+import java.net.http.*
 
 fun properties(key: String) = project.findProperty(key).toString()
 
@@ -71,6 +75,46 @@ tasks {
         gradleVersion = properties("gradleVersion")
     }
 
+    test {
+        useJUnitPlatform()
+        testLogging {
+            exceptionFormat = TestExceptionFormat.FULL
+            events = setOf(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
+        }
+        addTestListener(object : TestListener {
+            override fun beforeTest(p0: TestDescriptor?) = Unit
+            override fun beforeSuite(p0: TestDescriptor?) = Unit
+            override fun afterTest(desc: TestDescriptor, result: TestResult) = Unit
+            override fun afterSuite(desc: TestDescriptor, result: TestResult) {
+                if (desc.parent == null) {
+                    val passed = result.successfulTestCount
+                    val failed = result.failedTestCount
+                    val skipped = result.skippedTestCount
+
+                    if (project.properties["testsBadgeApiKey"] != null) {
+                        val apiKey = project.properties["testsBadgeApiKey"]
+                        val response: HttpResponse<String> = HttpClient.newHttpClient()
+                            .send(
+                                HttpRequest.newBuilder()
+                                    .uri(
+                                        URI(
+                                            "https://rife2.com/tests-badge/update/com.uwyn.rife2/rife2-idea?" +
+                                                    "apiKey=$apiKey&" +
+                                                    "passed=$passed&" +
+                                                    "failed=$failed&" +
+                                                    "skipped=$skipped"
+                                        )
+                                    )
+                                    .POST(HttpRequest.BodyPublishers.noBody())
+                                    .build(), HttpResponse.BodyHandlers.ofString()
+                            )
+                        println("RESPONSE: " + response.statusCode())
+                        println(response.body())
+                    }
+                }
+            }
+        })
+    }
     patchPluginXml {
         version.set(properties("pluginVersion"))
         sinceBuild.set(properties("pluginSinceBuild"))
