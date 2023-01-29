@@ -2,7 +2,8 @@
 
 # RIFE2 Changelog
 
-## 0.5.0
+## [Unreleased]
+### Added
 - Initial release of RIFE2 IntelliJ Plugin
 - Supports HTML, JSON, SVG, TXT and XML template language highlighting will fallback to original languages.
 - Filter value tags auto-completion to all template types.
