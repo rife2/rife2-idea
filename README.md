@@ -12,7 +12,7 @@ Support for the RIFE2 framework: https://rife2.com
 
 ## Installation
 
-- Using IDE built-in plugin system (Waiting for JetBrain verification, use the manual installation method for now):
+- Using IDE built-in plugin system: _(Waiting for JetBrain verification, use the manual installation method for now)_
   
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "RIFE2"</kbd> >
   <kbd>Install Plugin</kbd>
