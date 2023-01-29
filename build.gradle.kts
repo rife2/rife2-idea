@@ -70,17 +70,14 @@ kover.xmlReport {
     onCheck.set(true)
 }
 
+
 tasks {
     wrapper {
         gradleVersion = properties("gradleVersion")
     }
 
     test {
-        useJUnitPlatform()
-        testLogging {
-            exceptionFormat = TestExceptionFormat.FULL
-            events = setOf(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
-        }
+        val apiKey = project.properties["testsBadgeApiKey"]
         addTestListener(object : TestListener {
             override fun beforeTest(p0: TestDescriptor?) = Unit
             override fun beforeSuite(p0: TestDescriptor?) = Unit
@@ -91,8 +88,7 @@ tasks {
                     val failed = result.failedTestCount
                     val skipped = result.skippedTestCount
 
-                    if (project.properties["testsBadgeApiKey"] != null) {
-                        val apiKey = project.properties["testsBadgeApiKey"]
+                    if (apiKey != null) {
                         val response: HttpResponse<String> = HttpClient.newHttpClient()
                             .send(
                                 HttpRequest.newBuilder()
