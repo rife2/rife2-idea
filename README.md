@@ -7,7 +7,24 @@
 ![Build](https://github.com/gbevin/rife2-idea/workflows/Build/badge.svg)
 [![Tests](https://rife2.com/tests-badge/badge/com.uwyn.rife2/rife2-idea)](https://github.com/gbevin/rife2/actions/workflows/gradle.yml)
 <!-- Plugin description -->
-Support for the RIFE2 framework: https://rife2.com
+Support for the RIFE2 web framework: https://rife2.com
+
+This plugin initially focuses on support for the template engine, but will
+further expand to additional features that can enhance RIFE2 development
+productivity in IntelliJ IDEA.
+
+* Supports HTML, JSON, SVG, TXT and XML template language highlighting with
+  fallback to original languages.
+* Filtered value tags auto-completion to all template types.
+* Syntax highlighting color settings configuration panel.
+* Auto-tag closing characters addition when typing { or <!.
+
+After installing the RIFE2 plugins from the marketplace, the recognized template
+file types will automatically support RIFE2 template tags. Any code outside
+those template tags will be handled by the original IDEA language support.
+
+No configuration is necessary, but if desired, the highlighted colors can be
+changed for each template tag type and tag name.
 <!-- Plugin description end -->
 
 ## Installation
