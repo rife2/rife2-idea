@@ -29,7 +29,7 @@ changed for each template tag type and tag name.
 
 ## Installation
 
-- Using IDE built-in plugin system: _(Waiting for JetBrain verification, use the manual installation method for now)_
+- Using IDE built-in plugin system:
   
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "RIFE2"</kbd> >
   <kbd>Install Plugin</kbd>
