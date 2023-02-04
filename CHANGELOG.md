@@ -3,7 +3,9 @@
 # RIFE2 Changelog
 
 ## [Unreleased]
-- Fixed formatting of templated language not behaving correctly.
+
+## [0.5.2] - 2023-02-04
+- Fixed formatting of templated language not behaving correctly.%0D
 
 ## [0.5.1] - 2023-01-30
 - Improvements to plugin description for the JetBrains marketplace.
@@ -16,6 +18,7 @@
 - Auto-tag closing characters addition when typing `{` or `<!`.
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/gbevin/rife2-idea/compare/v0.5.1...HEAD
+[Unreleased]: https://github.com/gbevin/rife2-idea/compare/v0.5.2...HEAD
+[0.5.2]: https://github.com/gbevin/rife2-idea/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/gbevin/rife2-idea/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/gbevin/rife2-idea/commits/v0.5.0
