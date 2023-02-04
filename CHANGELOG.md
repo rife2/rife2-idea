@@ -3,9 +3,10 @@
 # RIFE2 Changelog
 
 ## [Unreleased]
+- Fixed formatting of templated language not behaving correctly.
 
 ## [0.5.1] - 2023-01-30
-Improvements to plugin description for the JetBrains marketplace.
+- Improvements to plugin description for the JetBrains marketplace.
 
 ## [0.5.0] - 2023-01-29
 - Initial release of RIFE2 IntelliJ Plugin
