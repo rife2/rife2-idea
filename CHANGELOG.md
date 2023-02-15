@@ -3,6 +3,9 @@
 # RIFE2 Changelog
 
 ## [Unreleased]
+- Added file template support for Element, Router and Site creation.
+- Added Java live templates for common routing idioms.
+- Added template engine live templates for tag creation and surrounding.
 
 ## [0.5.2] - 2023-02-04
 - Fixed formatting of templated language not behaving correctly.%0D

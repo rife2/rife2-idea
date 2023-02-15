@@ -9,10 +9,9 @@
 <!-- Plugin description -->
 Support for the RIFE2 web framework: https://rife2.com
 
-This plugin initially focuses on support for the template engine, but will
-further expand to additional features that can enhance RIFE2 development
-productivity in IntelliJ IDEA.
-
+* Provides file templates for Element, Router and Site class creation.
+* Provides Java live templates for common routing idioms.
+* Provides template engine live templates for tag creation and surrounding.
 * Supports HTML, JSON, SVG, TXT and XML template language highlighting with
   fallback to original languages.
 * Filtered value tags auto-completion to all template types.
