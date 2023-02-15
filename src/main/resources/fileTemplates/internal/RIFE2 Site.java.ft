@@ -1,0 +1,14 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+import rife.engine.*;
+
+public class ${NAME} extends Site {
+    public void setup() {
+        #[[$END$]]#
+    }
+
+    public static void main(String[] args) {
+        new Server().start(new ${NAME}());
+    }
+}

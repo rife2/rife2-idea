@@ -162,7 +162,28 @@
         <lang.substitutor
                 language="TEXT"
                 implementationClass="rife.idea.file.Rife2LanguageSubstitutorTxt"/>
+
+        <!-- Live Templates -->
+        <defaultLiveTemplates file="/liveTemplates/Java.xml"/>
+        <defaultLiveTemplates file="/liveTemplates/Text.xml"/>
+        <defaultLiveTemplates file="/liveTemplates/XML.xml"/>
+        <liveTemplateContext implementation="rife.idea.liveTemplates.JavaContext"/>
+        <liveTemplateContext implementation="rife.idea.liveTemplates.JsonContext"/>
+        <liveTemplateContext implementation="rife.idea.liveTemplates.HtmlContext"/>
+        <liveTemplateContext implementation="rife.idea.liveTemplates.SvgContext"/>
+        <liveTemplateContext implementation="rife.idea.liveTemplates.TxtContext"/>
+        <liveTemplateContext implementation="rife.idea.liveTemplates.XmlContext"/>
+
+        <internalFileTemplate name="RIFE2 Element.java"/>
+        <internalFileTemplate name="RIFE2 Router.java"/>
+        <internalFileTemplate name="RIFE2 Site.java"/>
     </extensions>
+
+    <actions>
+        <action id="AddNewAntlersFile" class="rife.idea.file.CreateRife2FileAction">
+            <add-to-group group-id="NewGroup" anchor="first"/>
+        </action>
+    </actions>
 
     <applicationListeners>
     </applicationListeners>

@@ -1,0 +1,199 @@
+<templateSet group="Java">
+    <template name="group"
+              value="group(&quot;$PATH$&quot;, $ROUTER$$END$);"
+              description="RIFE2 group definition"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ROUTER" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="groupf"
+              value="Router $FIELD$ = group(&quot;$PATH$&quot;, $ROUTER$$END$);"
+              description="RIFE2 group definition field"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="FIELD" expression="suggestVariableName()" defaultValue="" alwaysStopAt="true"/>
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ROUTER" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="router"
+              value="new Router() {&#10;
+        public void setup() {&#10;
+            $END$
+    }&#10;
+    }"
+              description="RIFE2 router anonymous inner class"
+              toReformat="true"
+              toShortenFQNames="true">
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="get"
+              value="get(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 get route"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="getf"
+              value="Route $FIELD$ = get(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 get route field"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="FIELD" expression="suggestVariableName()" defaultValue="" alwaysStopAt="true"/>
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="post"
+              value="post(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 post route"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="postf"
+              value="Route $FIELD$ = post(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 post route field"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="FIELD" expression="suggestVariableName()" defaultValue="" alwaysStopAt="true"/>
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="getpost"
+              value="getPost(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 getPost route"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="getpostf"
+              value="Route $FIELD$ = getPost(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 getPost route field"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="FIELD" expression="suggestVariableName()" defaultValue="" alwaysStopAt="true"/>
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="put"
+              value="put(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 put route"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="putf"
+              value="Route $FIELD$ = put(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 put route field"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="FIELD" expression="suggestVariableName()" defaultValue="" alwaysStopAt="true"/>
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="delete"
+              value="delete(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 delete route"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="deletef"
+              value="Route $FIELD$ = delete(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 delete route field"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="FIELD" expression="suggestVariableName()" defaultValue="" alwaysStopAt="true"/>
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="patch"
+              value="patch(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 patch route"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="patchf"
+              value="Route $FIELD$ = patch(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 patch route field"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="FIELD" expression="suggestVariableName()" defaultValue="" alwaysStopAt="true"/>
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="route"
+              value="route(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 route"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+    <template name="routef"
+              value="Route $FIELD$ = route(&quot;$PATH$&quot;, $ELEMENT$$END$);"
+              description="RIFE2 route field"
+              toReformat="true"
+              toShortenFQNames="true">
+        <variable name="FIELD" expression="suggestVariableName()" defaultValue="" alwaysStopAt="true"/>
+        <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true"/>
+        <variable name="ELEMENT" expression="complete()" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="JAVA" value="true"/>
+        </context>
+    </template>
+</templateSet>

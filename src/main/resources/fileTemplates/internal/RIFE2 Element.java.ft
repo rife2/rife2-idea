@@ -1,0 +1,11 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+import rife.engine.*;
+
+public class ${NAME} implements Element {
+    public void process(Context c)
+    throws Exception {
+        #[[$END$]]#
+    }
+}

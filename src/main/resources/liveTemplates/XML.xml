@@ -1,0 +1,242 @@
+<templateSet group="HTML/XML">
+    <template name="vl"
+              value="&lt;!--v $NAME$--&gt;$END$&lt;!--/v--&gt;"
+              description="RIFE2 long value tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="vls"
+              value="&lt;!--v $NAME$--&gt;$SELECTION$$END$&lt;!--/v--&gt;"
+              description="Surround with RIFE2 long value tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="vs"
+              value="&lt;!--v $NAME$/--&gt;$END$"
+              description="RIFE2 short value tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="vcl"
+              value="{{v $NAME$}}$END${{/v}}"
+              description="RIFE2 common long value tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="vcls"
+              value="{{v $NAME$}}$SELECTION$$END${{/v}}"
+              description="Surround with RIFE2 common long value tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="vcs"
+              value="{{v $NAME$/}}$END$"
+              description="RIFE2 common short value tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="b"
+              value="&lt;!--b $NAME$--&gt;$END$&lt;!--/b--&gt;"
+              description="RIFE2 block tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="bs"
+              value="&lt;!--b $NAME$--&gt;$SELECTION$$END$&lt;!--/b--&gt;"
+              description="Surround with RIFE2 block tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="bc"
+              value="{{b $NAME$}}$END${{/b}}"
+              description="RIFE2 common block tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="bcs"
+              value="{{b $NAME$}}$SELECTION$$END${{/b}}"
+              description="Surround with RIFE2 common block tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="bv"
+              value="&lt;!--bv $NAME$--&gt;$END$&lt;!--/bv--&gt;"
+              description="RIFE2 block value tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="bvs"
+              value="&lt;!--bv $NAME$--&gt;$SELECTION$$END$&lt;!--/bv--&gt;"
+              description="Surround with RIFE2 block value tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="bvc"
+              value="{{bv $NAME$}}$END${{/bv}}"
+              description="RIFE2 common block value tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="bvcs"
+              value="{{bv $NAME$}}$SELECTION$$END${{/bv}}"
+              description="Surround with RIFE2 common block value tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="ba"
+              value="&lt;!--ba $NAME$--&gt;$END$&lt;!--/ba--&gt;"
+              description="RIFE2 block append tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="bas"
+              value="&lt;!--ba $NAME$--&gt;$SELECTION$$END$&lt;!--/ba--&gt;"
+              description="Surround with RIFE2 block append tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="bac"
+              value="{{ba $NAME$}}$END${{/ba}}"
+              description="RIFE2 common block append tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="bacs"
+              value="{{ba $NAME$}}$SELECTION$$END${{/ba}}"
+              description="Surround with RIFE2 common block append tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="i"
+              value="&lt;!--i $NAME$/--&gt;$END$"
+              description="RIFE2 include tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+    <template name="ic"
+              value="{{i $NAME$/}}$END$"
+              description="RIFE2 common include tag"
+              toReformat="false"
+              toShortenFQNames="false">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="HTML" value="true"/>
+            <option name="SVG" value="true"/>
+            <option name="XML" value="true"/>
+        </context>
+    </template>
+</templateSet>
