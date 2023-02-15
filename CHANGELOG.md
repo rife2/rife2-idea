@@ -3,9 +3,9 @@
 # RIFE2 Changelog
 
 ## [Unreleased]
-- Added file template support for Element, Router and Site creation.
-- Added Java live templates for common routing idioms.
-- Added template engine live templates for tag creation and surrounding.
+
+## [0.5.3] - 2023-02-15
+- Added file template support for Element, Router and Site creation.%0D%0A- Added Java live templates for common routing idioms.%0D%0A- Added template engine live templates for tag creation and surrounding.%0D
 
 ## [0.5.2] - 2023-02-04
 - Fixed formatting of templated language not behaving correctly.%0D
@@ -21,7 +21,8 @@
 - Auto-tag closing characters addition when typing `{` or `<!`.
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/gbevin/rife2-idea/compare/v0.5.2...HEAD
+[Unreleased]: https://github.com/gbevin/rife2-idea/compare/v0.5.3...HEAD
+[0.5.3]: https://github.com/gbevin/rife2-idea/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/gbevin/rife2-idea/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/gbevin/rife2-idea/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/gbevin/rife2-idea/commits/v0.5.0
