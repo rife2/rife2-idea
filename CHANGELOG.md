@@ -3,7 +3,7 @@
 # RIFE2 Changelog
 
 ## [Unreleased]
-- Added support for ^ characters in template names.
+- Added support for ^ characters in template tag names.
 
 ## [0.5.3] - 2023-02-15
 - Added file template support for Element, Router and Site creation.
