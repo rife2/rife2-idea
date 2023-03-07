@@ -4,8 +4,8 @@
 [![Java](https://img.shields.io/badge/java-11%2B-blue)](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
 [![Version](https://img.shields.io/jetbrains/plugin/v/20947-RIFE2.svg)](https://plugins.jetbrains.com/plugin/20947-rife2)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/20947-RIFE2.svg)](https://plugins.jetbrains.com/plugin/20947-rife2)
-![Build](https://github.com/gbevin/rife2-idea/workflows/Build/badge.svg)
-[![Tests](https://rife2.com/tests-badge/badge/com.uwyn.rife2/rife2-idea)](https://github.com/gbevin/rife2/actions/workflows/gradle.yml)
+![Build](https://github.com/rife2/rife2-idea/workflows/Build/badge.svg)
+[![Tests](https://rife2.com/tests-badge/badge/com.uwyn.rife2/rife2-idea)](https://github.com/rife2/rife2/actions/workflows/gradle.yml)
 <!-- Plugin description -->
 Support for the RIFE2 web framework: https://rife2.com
 
@@ -35,7 +35,7 @@ changed for each template tag type and tag name.
   
 - Manually:
 
-  Download the [latest release](https://github.com/gbevin/rife2-idea/releases/latest) and install it manually using
+  Download the [latest release](https://github.com/rife2/rife2-idea/releases/latest) and install it manually using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
 
