@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class JavaContext extends TemplateContextType {
     protected JavaContext() {
-        super("Java");
+        super("JAVA", "Java");
     }
 
     @Override

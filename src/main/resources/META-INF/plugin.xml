@@ -167,12 +167,12 @@
         <defaultLiveTemplates file="/liveTemplates/Java.xml"/>
         <defaultLiveTemplates file="/liveTemplates/Text.xml"/>
         <defaultLiveTemplates file="/liveTemplates/XML.xml"/>
-        <liveTemplateContext contextId="JAVA" implementation="rife.idea.liveTemplates.JavaContext"/>
-        <liveTemplateContext contextId="JSON" implementation="rife.idea.liveTemplates.JsonContext"/>
-        <liveTemplateContext contextId="HTML" implementation="rife.idea.liveTemplates.HtmlContext"/>
-        <liveTemplateContext contextId="SVG" implementation="rife.idea.liveTemplates.SvgContext"/>
-        <liveTemplateContext contextId="TXT" implementation="rife.idea.liveTemplates.TxtContext"/>
-        <liveTemplateContext contextId="XML" implementation="rife.idea.liveTemplates.XmlContext"/>
+        <liveTemplateContext implementation="rife.idea.liveTemplates.JavaContext"/>
+        <liveTemplateContext implementation="rife.idea.liveTemplates.JsonContext"/>
+        <liveTemplateContext implementation="rife.idea.liveTemplates.HtmlContext"/>
+        <liveTemplateContext implementation="rife.idea.liveTemplates.SvgContext"/>
+        <liveTemplateContext implementation="rife.idea.liveTemplates.TxtContext"/>
+        <liveTemplateContext implementation="rife.idea.liveTemplates.XmlContext"/>
 
         <internalFileTemplate name="RIFE2 Element.java"/>
         <internalFileTemplate name="RIFE2 Router.java"/>

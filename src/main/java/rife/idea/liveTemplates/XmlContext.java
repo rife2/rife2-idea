@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class XmlContext extends TemplateContextType {
     protected XmlContext() {
-        super("XML");
+        super("XML", "XML");
     }
 
     @Override

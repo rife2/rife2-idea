@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class TxtContext extends TemplateContextType {
     protected TxtContext() {
-        super("TXT");
+        super("TXT", "TXT");
     }
 
     @Override

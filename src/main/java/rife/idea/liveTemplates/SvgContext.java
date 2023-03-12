@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class SvgContext extends TemplateContextType {
     protected SvgContext() {
-        super("SVG");
+        super("SVG", "SVG");
     }
 
     @Override
