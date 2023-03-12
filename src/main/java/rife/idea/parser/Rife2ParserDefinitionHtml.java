@@ -36,6 +36,18 @@ public class Rife2ParserDefinitionHtml extends Rife2ParserDefinition {
         CERRCHAR_V, TENDI_B, TSTERM_B, TS_B, TTagName_B, TERRCHAR_B,
         CENDI_B, CSTERM_B, CS_B, CTagName_B, CERRCHAR_B;
 
+    public static TokenSet COMMENTS;
+    public static TokenSet COMMENTED;
+    public static TokenSet STRINGS;
+    public static TokenSet NAMES_INCLUDE;
+    public static TokenSet NAMES_COMMENT;
+    public static TokenSet NAMES_BLOCK;
+    public static TokenSet NAMES_VALUE;
+    public static TokenSet TAGS_INCLUDE;
+    public static TokenSet TAGS_COMMENT;
+    public static TokenSet TAGS_BLOCK;
+    public static TokenSet TAGS_VALUE;
+
     static {
         setupLanguageDefinition();
     }
@@ -111,117 +123,117 @@ public class Rife2ParserDefinitionHtml extends Rife2ParserDefinition {
         CS_B = tokenIElementTypes.get(TemplateLexer.CS_B);
         CTagName_B = tokenIElementTypes.get(TemplateLexer.CTagName_B);
         CERRCHAR_B = tokenIElementTypes.get(TemplateLexer.CERRCHAR_B);
+
+        COMMENTS =
+            PSIElementTypeFactory.createTokenSet(
+                Rife2LanguageHtml.INSTANCE,
+                TemplateLexer.TTEXT_C,
+                TemplateLexer.CTEXT_C,
+                TemplateLexer.TComment_C,
+                TemplateLexer.CComment_C);
+
+        COMMENTED =
+            PSIElementTypeFactory.createTokenSet(
+                Rife2LanguageHtml.INSTANCE,
+                TemplateLexer.TTEXT_C,
+                TemplateLexer.CTEXT_C);
+
+        STRINGS =
+            PSIElementTypeFactory.createTokenSet(
+                Rife2LanguageHtml.INSTANCE,
+                TemplateLexer.TTagName_I,
+                TemplateLexer.TComment_C,
+                TemplateLexer.CTagName_I,
+                TemplateLexer.CComment_C,
+                TemplateLexer.TTagName_V,
+                TemplateLexer.CTagName_V,
+                TemplateLexer.TTagName_B,
+                TemplateLexer.CTagName_B);
+
+        NAMES_INCLUDE =
+            PSIElementTypeFactory.createTokenSet(
+                Rife2LanguageHtml.INSTANCE,
+                TemplateLexer.TTagName_I,
+                TemplateLexer.CTagName_I);
+
+        NAMES_COMMENT =
+            PSIElementTypeFactory.createTokenSet(
+                Rife2LanguageHtml.INSTANCE,
+                TemplateLexer.TComment_C,
+                TemplateLexer.CComment_C);
+
+        NAMES_BLOCK =
+            PSIElementTypeFactory.createTokenSet(
+                Rife2LanguageHtml.INSTANCE,
+                TemplateLexer.TTagName_B,
+                TemplateLexer.CTagName_B);
+
+        NAMES_VALUE =
+            PSIElementTypeFactory.createTokenSet(
+                Rife2LanguageHtml.INSTANCE,
+                TemplateLexer.TTagName_V,
+                TemplateLexer.CTagName_V);
+
+        TAGS_INCLUDE =
+            PSIElementTypeFactory.createTokenSet(
+                Rife2LanguageHtml.INSTANCE,
+                TemplateLexer.CSTART_I,
+                TemplateLexer.CSTERM_I,
+                TemplateLexer.TSTART_I,
+                TemplateLexer.TSTERM_I,
+                TemplateLexer.CS_I,
+                TemplateLexer.TS_I);
+
+        TAGS_COMMENT =
+            PSIElementTypeFactory.createTokenSet(
+                Rife2LanguageHtml.INSTANCE,
+                TemplateLexer.CSTART_C,
+                TemplateLexer.CCLOSE_C,
+                TemplateLexer.CSTERM_C,
+                TemplateLexer.CENDI_C,
+                TemplateLexer.TSTART_C,
+                TemplateLexer.TCLOSE_C,
+                TemplateLexer.TSTERM_C,
+                TemplateLexer.TENDI_C,
+                TemplateLexer.CS_C,
+                TemplateLexer.TS_C);
+
+        TAGS_BLOCK =
+            PSIElementTypeFactory.createTokenSet(
+                Rife2LanguageHtml.INSTANCE,
+                TemplateLexer.CSTART_B,
+                TemplateLexer.CSTART_BA,
+                TemplateLexer.CSTART_BV,
+                TemplateLexer.CCLOSE_B,
+                TemplateLexer.CCLOSE_BA,
+                TemplateLexer.CCLOSE_BV,
+                TemplateLexer.CSTERM_B,
+                TemplateLexer.CENDI_B,
+                TemplateLexer.TSTART_B,
+                TemplateLexer.TSTART_BA,
+                TemplateLexer.TSTART_BV,
+                TemplateLexer.TCLOSE_B,
+                TemplateLexer.TCLOSE_BA,
+                TemplateLexer.TCLOSE_BV,
+                TemplateLexer.TSTERM_B,
+                TemplateLexer.TENDI_B,
+                TemplateLexer.CS_B,
+                TemplateLexer.TS_B);
+
+        TAGS_VALUE =
+            PSIElementTypeFactory.createTokenSet(
+                Rife2LanguageHtml.INSTANCE,
+                TemplateLexer.CSTART_V,
+                TemplateLexer.CCLOSE_V,
+                TemplateLexer.CSTERM_V,
+                TemplateLexer.CENDI_V,
+                TemplateLexer.TSTART_V,
+                TemplateLexer.TCLOSE_V,
+                TemplateLexer.TSTERM_V,
+                TemplateLexer.TENDI_V,
+                TemplateLexer.CS_V,
+                TemplateLexer.TS_V);
     }
-
-    public static final TokenSet COMMENTS =
-        PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageHtml.INSTANCE,
-            TemplateLexer.TTEXT_C,
-            TemplateLexer.CTEXT_C,
-            TemplateLexer.TComment_C,
-            TemplateLexer.CComment_C);
-
-    public static final TokenSet COMMENTED =
-        PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageHtml.INSTANCE,
-            TemplateLexer.TTEXT_C,
-            TemplateLexer.CTEXT_C);
-
-    public static final TokenSet STRINGS =
-        PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageHtml.INSTANCE,
-            TemplateLexer.TTagName_I,
-            TemplateLexer.TComment_C,
-            TemplateLexer.CTagName_I,
-            TemplateLexer.CComment_C,
-            TemplateLexer.TTagName_V,
-            TemplateLexer.CTagName_V,
-            TemplateLexer.TTagName_B,
-            TemplateLexer.CTagName_B);
-
-    public static final TokenSet NAMES_INCLUDE =
-        PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageHtml.INSTANCE,
-            TemplateLexer.TTagName_I,
-            TemplateLexer.CTagName_I);
-
-    public static final TokenSet NAMES_COMMENT =
-        PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageHtml.INSTANCE,
-            TemplateLexer.TComment_C,
-            TemplateLexer.CComment_C);
-
-    public static final TokenSet NAMES_BLOCK =
-        PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageHtml.INSTANCE,
-            TemplateLexer.TTagName_B,
-            TemplateLexer.CTagName_B);
-
-    public static final TokenSet NAMES_VALUE =
-        PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageHtml.INSTANCE,
-            TemplateLexer.TTagName_V,
-            TemplateLexer.CTagName_V);
-
-    public static final TokenSet TAGS_INCLUDE =
-        PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageHtml.INSTANCE,
-            TemplateLexer.CSTART_I,
-            TemplateLexer.CSTERM_I,
-            TemplateLexer.TSTART_I,
-            TemplateLexer.TSTERM_I,
-            TemplateLexer.CS_I,
-            TemplateLexer.TS_I);
-
-    public static final TokenSet TAGS_COMMENT =
-        PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageHtml.INSTANCE,
-            TemplateLexer.CSTART_C,
-            TemplateLexer.CCLOSE_C,
-            TemplateLexer.CSTERM_C,
-            TemplateLexer.CENDI_C,
-            TemplateLexer.TSTART_C,
-            TemplateLexer.TCLOSE_C,
-            TemplateLexer.TSTERM_C,
-            TemplateLexer.TENDI_C,
-            TemplateLexer.CS_C,
-            TemplateLexer.TS_C);
-
-    public static final TokenSet TAGS_BLOCK =
-        PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageHtml.INSTANCE,
-            TemplateLexer.CSTART_B,
-            TemplateLexer.CSTART_BA,
-            TemplateLexer.CSTART_BV,
-            TemplateLexer.CCLOSE_B,
-            TemplateLexer.CCLOSE_BA,
-            TemplateLexer.CCLOSE_BV,
-            TemplateLexer.CSTERM_B,
-            TemplateLexer.CENDI_B,
-            TemplateLexer.TSTART_B,
-            TemplateLexer.TSTART_BA,
-            TemplateLexer.TSTART_BV,
-            TemplateLexer.TCLOSE_B,
-            TemplateLexer.TCLOSE_BA,
-            TemplateLexer.TCLOSE_BV,
-            TemplateLexer.TSTERM_B,
-            TemplateLexer.TENDI_B,
-            TemplateLexer.CS_B,
-            TemplateLexer.TS_B);
-
-    public static final TokenSet TAGS_VALUE =
-        PSIElementTypeFactory.createTokenSet(
-            Rife2LanguageHtml.INSTANCE,
-            TemplateLexer.CSTART_V,
-            TemplateLexer.CCLOSE_V,
-            TemplateLexer.CSTERM_V,
-            TemplateLexer.CENDI_V,
-            TemplateLexer.TSTART_V,
-            TemplateLexer.TCLOSE_V,
-            TemplateLexer.TSTERM_V,
-            TemplateLexer.TENDI_V,
-            TemplateLexer.CS_V,
-            TemplateLexer.TS_V);
 
     @NotNull
     public TokenSet getCommentTokens() {
