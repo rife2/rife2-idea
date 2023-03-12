@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+## [0.5.5] - 2023-03-12
+- Minor bug fixes%0D
+
 ## [0.5.4] - 2023-03-01
 - Added support for ^ characters in template tag names.
 
@@ -26,7 +29,8 @@
 - Auto-tag closing characters addition when typing `{` or `<!`.
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/gbevin/rife2-idea/compare/v0.5.4...HEAD
+[Unreleased]: https://github.com/rife2/rife2-idea/compare/v0.5.5...HEAD
+[0.5.5]: https://github.com/rife2/rife2-idea/compare/v0.5.4...v0.5.5
 [0.5.4]: https://github.com/gbevin/rife2-idea/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/gbevin/rife2-idea/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/gbevin/rife2-idea/compare/v0.5.1...v0.5.2
