@@ -1,7 +1,7 @@
 # RIFE2 IDEA Support
 
 [![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Java](https://img.shields.io/badge/java-11%2B-blue)](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
+[![Java](https://img.shields.io/badge/java-17%2B-blue)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 [![Version](https://img.shields.io/jetbrains/plugin/v/20947-RIFE2.svg)](https://plugins.jetbrains.com/plugin/20947-rife2)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/20947-RIFE2.svg)](https://plugins.jetbrains.com/plugin/20947-rife2)
 ![Build](https://github.com/rife2/rife2-idea/workflows/Build/badge.svg)
