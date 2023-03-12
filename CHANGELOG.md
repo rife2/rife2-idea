@@ -3,6 +3,7 @@
 # RIFE2 Changelog
 
 ## [Unreleased]
+- Minor bug fixes
 
 ## [0.5.4] - 2023-03-01
 - Added support for ^ characters in template tag names.
