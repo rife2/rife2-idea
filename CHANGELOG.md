@@ -5,7 +5,7 @@
 ## [Unreleased]
 
 ## [0.5.5] - 2023-03-12
-- Minor bug fixes%0D
+- Minor bug fixes
 
 ## [0.5.4] - 2023-03-01
 - Added support for ^ characters in template tag names.

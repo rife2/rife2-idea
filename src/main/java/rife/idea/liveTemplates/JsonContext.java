@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class JsonContext extends TemplateContextType {
     protected JsonContext() {
-        super("JSON", "JSON");
+        super("JSON");
     }
 
     @Override

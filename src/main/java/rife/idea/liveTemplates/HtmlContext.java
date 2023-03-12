@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class HtmlContext extends TemplateContextType {
     protected HtmlContext() {
-        super("HTML", "HTML");
+        super("HTML");
     }
 
     @Override

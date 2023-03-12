@@ -129,7 +129,7 @@ public class Rife2ParserDefinitionTxt extends Rife2ParserDefinition {
 
         COMMENTS =
             PSIElementTypeFactory.createTokenSet(
-                Rife2LanguageHtml.INSTANCE,
+                Rife2LanguageTxt.INSTANCE,
                 TemplateLexer.TTEXT_C,
                 TemplateLexer.CTEXT_C,
                 TemplateLexer.TComment_C,
