@@ -16,7 +16,6 @@ import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.jetbrains.annotations.NotNull;
-import rife.idea.Rife2LanguageHtml;
 import rife.idea.Rife2LanguageXml;
 import rife.idea.psi.Rife2FileXml;
 import rife.template.antlr.TemplateLexer;
