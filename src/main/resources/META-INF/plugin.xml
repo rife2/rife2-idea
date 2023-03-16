@@ -116,8 +116,6 @@
                 implementationClass="rife.idea.editor.comments.Rife2CommenterXml"/>
 
         <!-- Code completion -->
-        <typedHandler
-                implementation="rife.idea.editor.actions.Rife2TypedHandler"/>
         <completion.contributor
                 language="RIFE2HTML"
                 implementationClass="rife.idea.completion.Rife2FilteredValuesCompletionContributor"/>

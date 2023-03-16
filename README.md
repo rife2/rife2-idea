@@ -16,7 +16,6 @@ Support for the RIFE2 web framework: https://rife2.com
   fallback to original languages.
 * Filtered value tags auto-completion to all template types.
 * Syntax highlighting color settings configuration panel.
-* Auto-tag closing characters addition when typing { or <!.
 
 After installing the RIFE2 plugins from the marketplace, the recognized template
 file types will automatically support RIFE2 template tags. Any code outside
