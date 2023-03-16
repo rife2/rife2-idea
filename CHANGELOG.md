@@ -3,6 +3,8 @@
 # RIFE2 Changelog
 
 ## [Unreleased]
+- Removed auto-template tag closing while typing since it could be frustrating and live template are more convenient.
+- Updated to intellij-platform-plugin v1.5.0.
 
 ## [0.5.6] - 2023-03-12
 - Fixed initialization problems with recent versions of IDEA Community edition.
