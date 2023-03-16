@@ -3,6 +3,8 @@
 # RIFE2 Changelog
 
 ## [Unreleased]
+
+## [0.5.7] - 2023-03-16
 - Removed auto-template tag closing while typing since it could be frustrating and live template are more convenient.
 - Updated to intellij-platform-plugin v1.5.0.
 
@@ -35,7 +37,8 @@
 - Auto-tag closing characters addition when typing `{` or `<!`.
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/rife2/rife2-idea/compare/v0.5.6...HEAD
+[Unreleased]: https://github.com/rife2/rife2-idea/compare/v0.5.7...HEAD
+[0.5.7]: https://github.com/rife2/rife2-idea/compare/v0.5.6...v0.5.7
 [0.5.6]: https://github.com/rife2/rife2-idea/compare/v0.5.5...v0.5.6
 [0.5.5]: https://github.com/rife2/rife2-idea/compare/v0.5.4...v0.5.5
 [0.5.4]: https://github.com/gbevin/rife2-idea/compare/v0.5.3...v0.5.4
