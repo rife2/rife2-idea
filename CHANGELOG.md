@@ -3,7 +3,7 @@
 # RIFE2 Changelog
 
 ## [Unreleased]
-- Fixed exception with IDEA 2023.1
+- Fixed exception with IDEA 2023.1.
 
 ## [0.5.7] - 2023-03-16
 - Removed auto-template tag closing while typing since it could be frustrating and live template are more convenient.
@@ -25,7 +25,7 @@
 - Added template engine live templates for tag creation and surrounding.
 
 ## [0.5.2] - 2023-02-04
-- Fixed formatting of templated language not behaving correctly.%0D
+- Fixed formatting of templated language not behaving correctly.
 
 ## [0.5.1] - 2023-01-30
 - Improvements to plugin description for the JetBrains marketplace.
