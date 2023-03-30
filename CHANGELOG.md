@@ -3,6 +3,7 @@
 # RIFE2 Changelog
 
 ## [Unreleased]
+- Fixed exception with IDEA 2023.1
 
 ## [0.5.7] - 2023-03-16
 - Removed auto-template tag closing while typing since it could be frustrating and live template are more convenient.
