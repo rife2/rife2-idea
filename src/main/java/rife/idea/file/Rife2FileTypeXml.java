@@ -7,6 +7,7 @@ package rife.idea.file;
 import com.intellij.openapi.fileTypes.FileTypeEditorHighlighterProviders;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import org.jetbrains.annotations.*;
+import rife.idea.Rife2LanguageJson;
 import rife.idea.Rife2LanguageXml;
 import rife.idea.highlighter.Rife2TemplateHighlighterXml;
 
@@ -46,5 +47,9 @@ public class Rife2FileTypeXml extends Rife2FileType {
     @Override
     public Icon getIcon() {
         return Rife2Icons.FILE_XML;
+    }
+
+    protected LanguageFileType getAssociatedFileType() {
+        return Rife2LanguageXml.getDefaultTemplateLang();
     }
 }

@@ -6,6 +6,9 @@ package rife.idea.file;
 
 import com.intellij.openapi.fileTypes.FileTypeEditorHighlighterProviders;
 import com.intellij.openapi.fileTypes.LanguageFileType;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.templateLanguages.TemplateDataLanguageMappings;
 import org.jetbrains.annotations.*;
 import rife.idea.Rife2LanguageHtml;
 import rife.idea.highlighter.Rife2TemplateHighlighterHtml;
@@ -46,5 +49,9 @@ public class Rife2FileTypeHtml extends Rife2FileType {
     @Override
     public Icon getIcon() {
         return Rife2Icons.FILE_HTML;
+    }
+
+    protected LanguageFileType getAssociatedFileType() {
+        return Rife2LanguageHtml.getDefaultTemplateLang();
     }
 }

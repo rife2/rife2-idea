@@ -22,7 +22,7 @@ public abstract class Rife2FileType extends XmlLikeFileType implements TemplateL
 
     @Override
     public Charset extractCharsetFromFileContent(@Nullable final Project project, @Nullable final VirtualFile file, @NotNull final CharSequence content) {
-        var associatedFileType = getAssociatedFileType(file, project);
+        var associatedFileType = getAssociatedFileType();
 
         if (associatedFileType == null) {
             return null;
@@ -31,22 +31,5 @@ public abstract class Rife2FileType extends XmlLikeFileType implements TemplateL
         return CharsetUtil.extractCharsetFromFileContent(project, file, associatedFileType, content);
     }
 
-    private static LanguageFileType getAssociatedFileType(VirtualFile file, Project project) {
-        if (project == null) {
-            return null;
-        }
-
-        var language = TemplateDataLanguageMappings.getInstance(project).getMapping(file);
-
-        LanguageFileType associatedFileType = null;
-        if (language != null) {
-            associatedFileType = language.getAssociatedFileType();
-        }
-
-        if (language == null || associatedFileType == null) {
-            associatedFileType = Rife2LanguageHtml.getDefaultTemplateLang();
-        }
-
-        return associatedFileType;
-    }
+    protected abstract LanguageFileType getAssociatedFileType();
 }
