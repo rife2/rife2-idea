@@ -3,6 +3,8 @@
 # RIFE2 Changelog
 
 ## [Unreleased]
+
+## [0.5.9] - 2023-07-28
 - Added support for IDEA 2023.2.
 - Updated to latest IntelliJ Platform Plugin Template.
 
@@ -42,7 +44,8 @@
 - Auto-tag closing characters addition when typing `{` or `<!`.
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/rife2/rife2-idea/compare/v0.5.8...HEAD
+[Unreleased]: https://github.com/rife2/rife2-idea/compare/v0.5.9...HEAD
+[0.5.9]: https://github.com/rife2/rife2-idea/compare/v0.5.8...v0.5.9
 [0.5.8]: https://github.com/rife2/rife2-idea/compare/v0.5.7...v0.5.8
 [0.5.7]: https://github.com/rife2/rife2-idea/compare/v0.5.6...v0.5.7
 [0.5.6]: https://github.com/rife2/rife2-idea/compare/v0.5.5...v0.5.6
