@@ -3,10 +3,12 @@
 # RIFE2 Changelog
 
 ## [Unreleased]
+- Added support for IDEA 2023.3.
+- Updated to latest IntelliJ Platform Plugin Template v1.11.3.
 
 ## [0.5.9] - 2023-07-28
 - Added support for IDEA 2023.2.
-- Updated to latest IntelliJ Platform Plugin Template.
+- Updated to latest IntelliJ Platform Plugin Template v1.9.0.
 
 ## [0.5.8] - 2023-03-29
 - Fixed exception with IDEA 2023.1.
