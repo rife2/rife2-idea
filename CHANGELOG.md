@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+- Added support for IDEA 2024.1.
+- Updated to latest IntelliJ Platform Plugin Template v1.13.0.
+
 ## [0.6.0] - 2023-12-09
 
 - Added support for IDEA 2023.3.
