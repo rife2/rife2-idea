@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.6.1] - 2024-04-21
+
 - Added support for IDEA 2024.1.
 - Updated to latest IntelliJ Platform Plugin Template v1.13.0.
 
@@ -62,7 +64,8 @@
 - Auto-tag closing characters addition when typing `{` or `<!`.
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/rife2/rife2-idea/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/rife2/rife2-idea/compare/v0.6.1...HEAD
+[0.6.1]: https://github.com/rife2/rife2-idea/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/rife2/rife2-idea/compare/v0.5.9...v0.6.0
 [0.5.9]: https://github.com/rife2/rife2-idea/compare/v0.5.8...v0.5.9
 [0.5.8]: https://github.com/rife2/rife2-idea/compare/v0.5.7...v0.5.8
