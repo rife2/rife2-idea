@@ -8,7 +8,6 @@ import com.intellij.lang.Language;
 import com.intellij.lexer.*;
 import com.intellij.psi.tree.IElementType;
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor;
-import rife.idea.Rife2LanguageHtml;
 import rife.template.TemplateConfig;
 import rife.template.antlr.TemplateLexer;
 
