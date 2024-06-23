@@ -136,6 +136,32 @@ public class LexerJsonTest extends LexerTest {
     }
 
     @Test
+    public void regular_short_values_in_tags() {
+        givenInput("<<!v name/>>");
+        thenTokensAre(
+            TEXT, "<",
+            TSTART_V, "<!v",
+            TS_V, " ",
+            TTagName_V, "name",
+            TSTERM_V, "/>",
+            TEXT, ">"
+        );
+    }
+
+    @Test
+    public void regular_short_values_in_compact_tags() {
+        givenInput("{<!v name/>}");
+        thenTokensAre(
+            TEXT, "{",
+            TSTART_V, "<!v",
+            TS_V, " ",
+            TTagName_V, "name",
+            TSTERM_V, "/>",
+            TEXT, "}"
+        );
+    }
+
+    @Test
     public void regular_long_values() {
         givenInput("<!v name>default<!/v>");
         thenTokensAre(
@@ -145,6 +171,36 @@ public class LexerJsonTest extends LexerTest {
             TENDI_V, ">",
             TEXT, "default",
             TCLOSE_V, "<!/v>"
+        );
+    }
+
+    @Test
+    public void regular_long_values_in_tags() {
+        givenInput("<<!v name>default<!/v>>");
+        thenTokensAre(
+            TEXT, "<",
+            TSTART_V, "<!v",
+            TS_V, " ",
+            TTagName_V, "name",
+            TENDI_V, ">",
+            TEXT, "default",
+            TCLOSE_V, "<!/v>",
+            TEXT, ">"
+        );
+    }
+
+    @Test
+    public void regular_long_values_in_compact_tags() {
+        givenInput("{<!v name>default<!/v>}");
+        thenTokensAre(
+            TEXT, "{",
+            TSTART_V, "<!v",
+            TS_V, " ",
+            TTagName_V, "name",
+            TENDI_V, ">",
+            TEXT, "default",
+            TCLOSE_V, "<!/v>",
+            TEXT, "}"
         );
     }
 
@@ -160,6 +216,32 @@ public class LexerJsonTest extends LexerTest {
     }
 
     @Test
+    public void compact_short_values_in_tags() {
+        givenInput("<{{v name/}}>");
+        thenTokensAre(
+            TEXT, "<",
+            CSTART_V, "{{v",
+            CS_V, " ",
+            CTagName_V, "name",
+            CSTERM_V, "/}}",
+            TEXT, ">"
+        );
+    }
+
+    @Test
+    public void compact_short_values_in_compact_tags() {
+        givenInput("{{{v name/}}}");
+        thenTokensAre(
+            TEXT, "{",
+            CSTART_V, "{{v",
+            CS_V, " ",
+            CTagName_V, "name",
+            CSTERM_V, "/}}",
+            TEXT, "}"
+        );
+    }
+
+    @Test
     public void compact_long_values() {
         givenInput("{{v name}}default{{/v}}");
         thenTokensAre(
@@ -169,6 +251,36 @@ public class LexerJsonTest extends LexerTest {
             CENDI_V, "}}",
             TEXT, "default",
             CCLOSE_V, "{{/v}}"
+        );
+    }
+
+    @Test
+    public void compact_long_values_in_tags() {
+        givenInput("<{{v name}}default{{/v}}>");
+        thenTokensAre(
+            TEXT, "<",
+            CSTART_V, "{{v",
+            CS_V, " ",
+            CTagName_V, "name",
+            CENDI_V, "}}",
+            TEXT, "default",
+            CCLOSE_V, "{{/v}}",
+            TEXT, ">"
+        );
+    }
+
+    @Test
+    public void compact_long_values_in_compact_tags() {
+        givenInput("{{{v name}}default{{/v}}}");
+        thenTokensAre(
+            TEXT, "{",
+            CSTART_V, "{{v",
+            CS_V, " ",
+            CTagName_V, "name",
+            CENDI_V, "}}",
+            TEXT, "default",
+            CCLOSE_V, "{{/v}}",
+            TEXT, "}"
         );
     }
 
