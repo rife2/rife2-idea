@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.7.0] - 2024-06-23
+
 - Improved template parsing for the updated lexer in RIFE2-core.
 - Added support for IDEA 2024.2.
 - Updated to latest IntelliJ Platform Plugin Template v1.14.1.
@@ -68,7 +70,8 @@
 - Auto-tag closing characters addition when typing `{` or `<!`.
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/rife2/rife2-idea/compare/v0.6.1...HEAD
+[Unreleased]: https://github.com/rife2/rife2-idea/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/rife2/rife2-idea/compare/v0.6.1...v0.7.0
 [0.6.1]: https://github.com/rife2/rife2-idea/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/rife2/rife2-idea/compare/v0.5.9...v0.6.0
 [0.5.9]: https://github.com/rife2/rife2-idea/compare/v0.5.8...v0.5.9
