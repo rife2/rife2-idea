@@ -178,7 +178,7 @@
     </extensions>
 
     <actions>
-        <action id="AddNewAntlersFile" class="rife.idea.file.CreateRife2FileAction">
+        <action id="AddNewRife2File" class="rife.idea.file.CreateRife2FileAction">
             <add-to-group group-id="NewGroup" anchor="first"/>
         </action>
     </actions>
