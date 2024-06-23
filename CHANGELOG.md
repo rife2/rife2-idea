@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+- Improved template parsing for the updated lexer in RIFE2-core.
+- Added support for IDEA 2024.2.
+- Updated to latest IntelliJ Platform Plugin Template v1.14.1.
+
 ## [0.6.1] - 2024-04-21
 
 - Added support for IDEA 2024.1.
