@@ -21,7 +21,7 @@ public class CreateRife2FileAction extends CreateFileFromTemplateAction implemen
     }
 
     @Override
-    protected void buildDialog(@NotNull Project project, @NotNull PsiDirectory directory, CreateFileFromTemplateDialog.@NotNull Builder builder) {
+    protected void buildDialog(@NotNull Project project, @NotNull PsiDirectory directory, CreateFileFromTemplateDialog.Builder builder) {
         builder
             .setTitle("New RIFE2 File")
             .addKind("Element", CLASS_ICON, "RIFE2 Element.java")

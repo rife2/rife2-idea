@@ -15,8 +15,9 @@ import java.util.Map;
 public abstract class Rife2SyntaxHighlighter extends SyntaxHighlighterBase {
     public static final Map<IElementType, TextAttributesKey> ATTRIBUTES = new HashMap<>();
 
+    @NotNull
     @Override
-    public TextAttributesKey @NotNull [] getTokenHighlights(IElementType tokenType) {
+    public TextAttributesKey[] getTokenHighlights(IElementType tokenType) {
         var key = ATTRIBUTES.get(tokenType);
 
         return (key != null) ? pack(key) : new TextAttributesKey[0];

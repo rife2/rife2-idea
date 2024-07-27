@@ -23,7 +23,7 @@ public class Rife2LanguageXml extends Language implements TemplateLanguage, Inje
         super("RIFE2XML", "text/x-rife2-xml");
     }
 
-    public Rife2LanguageXml(@Nullable Language baseLanguage, @NotNull @NonNls final String ID, @NonNls final String @NotNull ... mimeTypes) {
+    public Rife2LanguageXml(@Nullable Language baseLanguage, @NotNull @NonNls final String ID, @NonNls final String ... mimeTypes) {
         super(baseLanguage, ID, mimeTypes);
     }
 }

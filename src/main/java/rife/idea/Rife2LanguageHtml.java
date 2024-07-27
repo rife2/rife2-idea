@@ -25,7 +25,7 @@ public class Rife2LanguageHtml extends Language implements TemplateLanguage, Inj
         super("RIFE2HTML", "text/x-rife2-html");
     }
 
-    public Rife2LanguageHtml(@Nullable Language baseLanguage, @NotNull @NonNls final String ID, @NonNls final String @NotNull ... mimeTypes) {
+    public Rife2LanguageHtml(@Nullable Language baseLanguage, @NotNull @NonNls final String ID, @NonNls final String ... mimeTypes) {
         super(baseLanguage, ID, mimeTypes);
     }
 }

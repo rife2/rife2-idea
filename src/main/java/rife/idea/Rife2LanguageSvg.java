@@ -23,7 +23,7 @@ public class Rife2LanguageSvg extends Language implements TemplateLanguage, Inje
         super("RIFE2SVG", "text/x-rife2-svg");
     }
 
-    public Rife2LanguageSvg(@Nullable Language baseLanguage, @NotNull @NonNls final String ID, @NonNls final String @NotNull ... mimeTypes) {
+    public Rife2LanguageSvg(@Nullable Language baseLanguage, @NotNull @NonNls final String ID, @NonNls final String ... mimeTypes) {
         super(baseLanguage, ID, mimeTypes);
     }
 }

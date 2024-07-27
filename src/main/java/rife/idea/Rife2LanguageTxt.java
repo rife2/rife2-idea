@@ -23,7 +23,7 @@ public class Rife2LanguageTxt extends Language implements TemplateLanguage, Inje
         super("RIFE2TXT", "text/x-rife2-txt");
     }
 
-    public Rife2LanguageTxt(@Nullable Language baseLanguage, @NotNull @NonNls final String ID, @NonNls final String @NotNull ... mimeTypes) {
+    public Rife2LanguageTxt(@Nullable Language baseLanguage, @NotNull @NonNls final String ID, @NonNls final String ... mimeTypes) {
         super(baseLanguage, ID, mimeTypes);
     }
 }

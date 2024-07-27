@@ -23,7 +23,7 @@ public class Rife2LanguageJson extends Language implements TemplateLanguage, Inj
         super("RIFE2JSON", "text/x-rife2-json");
     }
 
-    public Rife2LanguageJson(@Nullable Language baseLanguage, @NotNull @NonNls final String ID, @NonNls final String @NotNull ... mimeTypes) {
+    public Rife2LanguageJson(@Nullable Language baseLanguage, @NotNull @NonNls final String ID, @NonNls final String ... mimeTypes) {
         super(baseLanguage, ID, mimeTypes);
     }
 }
