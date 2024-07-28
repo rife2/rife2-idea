@@ -12,18 +12,14 @@ import com.intellij.psi.templateLanguages.TemplateLanguage;
 import org.jetbrains.annotations.*;
 
 public class Rife2LanguageXml extends Language implements TemplateLanguage, InjectableLanguage {
+    @NotNull
     public static final Rife2LanguageXml INSTANCE = new Rife2LanguageXml();
 
-    @SuppressWarnings("SameReturnValue") // ideally this would be public static, but the static inits in the tests get cranky when we do that
     public static LanguageFileType getDefaultTemplateLang() {
         return XmlFileType.INSTANCE;
     }
 
-    public Rife2LanguageXml() {
+    private Rife2LanguageXml() {
         super("RIFE2XML", "text/x-rife2-xml");
-    }
-
-    public Rife2LanguageXml(@Nullable Language baseLanguage, @NotNull @NonNls final String ID, @NonNls final String ... mimeTypes) {
-        super(baseLanguage, ID, mimeTypes);
     }
 }

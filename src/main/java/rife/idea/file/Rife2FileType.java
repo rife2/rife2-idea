@@ -9,9 +9,7 @@ import com.intellij.lang.Language;
 import com.intellij.openapi.fileTypes.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.templateLanguages.TemplateDataLanguageMappings;
 import org.jetbrains.annotations.*;
-import rife.idea.Rife2LanguageHtml;
 
 import java.nio.charset.Charset;
 

@@ -7,9 +7,7 @@ package rife.idea.file;
 import com.intellij.openapi.fileTypes.FileTypeEditorHighlighterProviders;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import org.jetbrains.annotations.*;
-import rife.idea.Rife2LanguageHtml;
 import rife.idea.Rife2LanguageJson;
-import rife.idea.highlighter.Rife2TemplateHighlighterHtml;
 import rife.idea.highlighter.Rife2TemplateHighlighterJson;
 
 import javax.swing.*;

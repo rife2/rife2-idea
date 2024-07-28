@@ -10,8 +10,6 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService
                 serviceImplementation="rife.idea.services.Rife2ApplicationService"/>
-        <projectService
-                serviceImplementation="rife.idea.services.Rife2ProjectService"/>
         <colorSettingsPage
                 implementation="rife.idea.highlighter.Rife2ColorSettingsPage"/>
 
@@ -20,32 +18,29 @@
                 name="RIFE2HTML"
                 implementationClass="rife.idea.file.Rife2FileTypeHtml"
                 fieldName="INSTANCE"
-                language="RIFE2HTML"
-                patterns="*.html"/>
+                language="RIFE2HTML"/>
         <fileType
                 name="RIFE2JSON"
                 implementationClass="rife.idea.file.Rife2FileTypeJson"
                 fieldName="INSTANCE"
-                language="RIFE2JSON"
-                patterns="*.json"/>
+                language="RIFE2JSON"/>
         <fileType
                 name="RIFE2SVG"
                 implementationClass="rife.idea.file.Rife2FileTypeSvg"
                 fieldName="INSTANCE"
-                language="RIFE2SVG"
-                patterns="*.svg"/>
+                language="RIFE2SVG"/>
         <fileType
                 name="RIFE2TXT"
                 implementationClass="rife.idea.file.Rife2FileTypeTxt"
                 fieldName="INSTANCE"
-                language="RIFE2TXT"
-                patterns="*.txt"/>
+                language="RIFE2TXT"/>
         <fileType
                 name="RIFE2XML"
                 implementationClass="rife.idea.file.Rife2FileTypeXml"
                 fieldName="INSTANCE"
-                language="RIFE2XML"
-                patterns="*.xml"/>
+                language="RIFE2XML"/>
+
+        <fileTypeOverrider implementation="rife.idea.file.Rife2FileTypeOverrider" order="first"/>
 
         <!-- Template parser -->
         <lang.parserDefinition
@@ -165,12 +160,12 @@
         <defaultLiveTemplates file="/liveTemplates/Java.xml"/>
         <defaultLiveTemplates file="/liveTemplates/Text.xml"/>
         <defaultLiveTemplates file="/liveTemplates/XML.xml"/>
-        <liveTemplateContext implementation="rife.idea.liveTemplates.JavaContext"/>
-        <liveTemplateContext implementation="rife.idea.liveTemplates.JsonContext"/>
-        <liveTemplateContext implementation="rife.idea.liveTemplates.HtmlContext"/>
-        <liveTemplateContext implementation="rife.idea.liveTemplates.SvgContext"/>
-        <liveTemplateContext implementation="rife.idea.liveTemplates.TxtContext"/>
-        <liveTemplateContext implementation="rife.idea.liveTemplates.XmlContext"/>
+        <liveTemplateContext contextId="RIFE2_TEMPLATE_JAVA" implementation="rife.idea.liveTemplates.JavaContext"/>
+        <liveTemplateContext contextId="RIFE2_TEMPLATE_JSON" implementation="rife.idea.liveTemplates.JsonContext"/>
+        <liveTemplateContext contextId="RIFE2_TEMPLATE_HTML" implementation="rife.idea.liveTemplates.HtmlContext"/>
+        <liveTemplateContext contextId="RIFE2_TEMPLATE_SVG" implementation="rife.idea.liveTemplates.SvgContext"/>
+        <liveTemplateContext contextId="RIFE2_TEMPLATE_TXT" implementation="rife.idea.liveTemplates.TxtContext"/>
+        <liveTemplateContext contextId="RIFE2_TEMPLATE_XML" implementation="rife.idea.liveTemplates.XmlContext"/>
 
         <internalFileTemplate name="RIFE2 Element.java"/>
         <internalFileTemplate name="RIFE2 Router.java"/>

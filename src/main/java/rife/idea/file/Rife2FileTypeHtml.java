@@ -6,9 +6,6 @@ package rife.idea.file;
 
 import com.intellij.openapi.fileTypes.FileTypeEditorHighlighterProviders;
 import com.intellij.openapi.fileTypes.LanguageFileType;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.templateLanguages.TemplateDataLanguageMappings;
 import org.jetbrains.annotations.*;
 import rife.idea.Rife2LanguageHtml;
 import rife.idea.highlighter.Rife2TemplateHighlighterHtml;

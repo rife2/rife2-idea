@@ -12,18 +12,14 @@ import com.intellij.psi.templateLanguages.TemplateLanguage;
 import org.jetbrains.annotations.*;
 
 public class Rife2LanguageSvg extends Language implements TemplateLanguage, InjectableLanguage {
+    @NotNull
     public static final Rife2LanguageSvg INSTANCE = new Rife2LanguageSvg();
 
-    @SuppressWarnings("SameReturnValue") // ideally this would be public static, but the static inits in the tests get cranky when we do that
     public static LanguageFileType getDefaultTemplateLang() {
         return XmlFileType.INSTANCE;
     }
 
-    public Rife2LanguageSvg() {
+    private Rife2LanguageSvg() {
         super("RIFE2SVG", "text/x-rife2-svg");
-    }
-
-    public Rife2LanguageSvg(@Nullable Language baseLanguage, @NotNull @NonNls final String ID, @NonNls final String ... mimeTypes) {
-        super(baseLanguage, ID, mimeTypes);
     }
 }
