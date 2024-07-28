@@ -18,8 +18,9 @@ Support for the RIFE2 web framework: https://rife2.com
 * Syntax highlighting color settings configuration panel.
 
 After installing the RIFE2 plugins from the marketplace, the recognized template
-file types will automatically support RIFE2 template tags. Any code outside
-those template tags will be handled by the original IDEA language support.
+file types will automatically support RIFE2 template tags as long as they are
+children of a `templates` directory. Any code outside those template tags will be
+handled by the original IDEA language support.
 
 No configuration is necessary, but if desired, the highlighted colors can be
 changed for each template tag type and tag name.
