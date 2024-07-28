@@ -4,6 +4,9 @@
 
 ## [Unreleased]
 
+- RIFE2 template file types are now only activated when they're found inside a `templates` directory.
+- Updated to latest IntelliJ Platform Plugin Template v2.0.0-rc2.
+
 ## [0.7.0] - 2024-06-23
 
 - Improved template parsing for the updated lexer in RIFE2-core.
