@@ -23,6 +23,6 @@ public class Rife2LanguageSubstitutorJson extends LanguageSubstitutor {
             return null;
         }
 
-        return FileTypeRegistry.getInstance().isFileOfType(file, JsonFileType.INSTANCE) ? Rife2LanguageJson.INSTANCE : null;
+        return FileTypeRegistry.getInstance().isFileOfType(file, Rife2LanguageJson.getDefaultTemplateLang()) ? Rife2LanguageJson.INSTANCE : null;
     }
 }

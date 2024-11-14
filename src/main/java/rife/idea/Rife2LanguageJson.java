@@ -4,9 +4,9 @@
  */
 package rife.idea;
 
-import com.intellij.json.JsonFileType;
 import com.intellij.lang.InjectableLanguage;
 import com.intellij.lang.Language;
+import com.intellij.openapi.fileTypes.FileTypeRegistry;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import com.intellij.psi.templateLanguages.TemplateLanguage;
 import org.jetbrains.annotations.*;
@@ -16,7 +16,7 @@ public class Rife2LanguageJson extends Language implements TemplateLanguage, Inj
     public static final Rife2LanguageJson INSTANCE = new Rife2LanguageJson();
 
     public static LanguageFileType getDefaultTemplateLang() {
-        return JsonFileType.INSTANCE;
+        return (LanguageFileType) FileTypeRegistry.getInstance().findFileTypeByName("JSON");
     }
 
     private Rife2LanguageJson() {
