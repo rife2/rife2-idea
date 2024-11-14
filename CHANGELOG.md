@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+- Fix for crash with IDEA 2024.3.
+
 ## [0.8.2] - 2024-11-14
 
 - Updated for latest IntelliJ IDEA.
