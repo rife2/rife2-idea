@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+## [0.8.4] - 2024-11-14
+
 - Fix for crash with IDEA 2024.3.
 
 ## [0.8.3] - 2024-11-14
@@ -89,7 +91,8 @@
 - Auto-tag closing characters addition when typing `{` or `<!`.
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/rife2/rife2-idea/compare/v0.8.3...HEAD
+[Unreleased]: https://github.com/rife2/rife2-idea/compare/v0.8.4...HEAD
+[0.8.4]: https://github.com/rife2/rife2-idea/compare/v0.8.3...v0.8.4
 [0.8.3]: https://github.com/rife2/rife2-idea/compare/v0.8.2...v0.8.3
 [0.8.2]: https://github.com/rife2/rife2-idea/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/rife2/rife2-idea/compare/v0.8.0...v0.8.1
