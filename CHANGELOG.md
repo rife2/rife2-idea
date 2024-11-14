@@ -4,6 +4,8 @@
 
 ## [Unreleased]
 
+- Updated for latest IntelliJ IDEA.
+
 ## [0.8.1] - 2024-10-14
 
 - Updated to latest IntelliJ Platform Plugin Template v2.0.2.
